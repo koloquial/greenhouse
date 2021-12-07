@@ -1,9 +1,29 @@
+import React, { useState } from 'react';
 
-function App() {
+const App = () => {
+  const [view, setView] = useState('');
+
   return (
-    <div>
-     
-    </div>
+    <>
+      <center>
+        <div>
+          <h1>Untitled Community</h1>
+        </div>
+        <div className='container'>
+          &nbsp;
+        </div>
+        <div className='container'>
+          &nbsp;
+        </div>
+        <br />
+        <div className='container'>
+          &nbsp;
+        </div>
+        <div className='container'>
+          &nbsp;
+        </div>
+      </center>
+    </>
   );
 }
 
