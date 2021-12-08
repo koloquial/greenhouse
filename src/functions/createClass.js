@@ -9,79 +9,79 @@ import Island from '../classes/Land/extends/Island';
 import Elm from '../classes/Resource/Elm';
 import Maple from '../classes/Resource/Maple';
 
-const createClass = (subType) => {
+const createClass = (subType, location) => {
     let random;
     switch(subType){
         case 'Land':
             random = Math.floor(Math.random() * 5);
             switch(random){
                 case 0:
-                    return new Forest();
+                    return new Forest(location);
                 case 1:
-                    return new Plains();
+                    return new Plains(location);
                 case 2:
-                    return new Swamp();
+                    return new Swamp(location);
                 case 3:
-                    return new Mountain();
+                    return new Mountain(location);
                 case 4:
-                    return new Island();
+                    return new Island(location);
                 default:
-                    return new Forest();
+                    return new Forest(location);
             }
         
         case 'Forest':
             random = Math.floor(Math.random() * 2);
             switch(random){
                 case 0:
-                    return new Elm(subType);
+                    return new Elm(subType, location);
                 case 1:
-                    return new Maple(subType);
+                    return new Maple(subType, location);
                 default:
-                    return new Maple(subType);
+                    return new Maple(subType, location);
             }
 
         case 'Plains':
             random = Math.floor(Math.random() * 2);
             switch(random){
                 case 0:
-                    return new Elm(subType);
+                    return new Elm(subType, location);
                 case 1:
-                    return new Maple(subType);
+                    return new Maple(subType, location);
                 default:
-                    return new Maple(subType);
+                    return new Maple(subType, location);
             }
 
         case 'Swamp':
             random = Math.floor(Math.random() * 2);
             switch(random){
                 case 0:
-                    return new Elm(subType);
+                    return new Elm(subType, location);
                 case 1:
-                    return new Maple(subType);
+                    return new Maple(subType, location);
                 default:
-                    return new Maple(subType);
+                    return new Maple(subType, location);
             }
 
         case 'Mountain':
             random = Math.floor(Math.random() * 2);
             switch(random){
                 case 0:
-                    return new Elm(subType);
+                    return new Elm(subType, location);
                 case 1:
-                    return new Maple(subType);
+                    return new Maple(subType, location);
                 default:
-                    return new Maple(subType);
+                    return new Maple(subType, location);
             }
 
         case 'Island':
             random = Math.floor(Math.random() * 2);
             switch(random){
                 case 0:
-                    return new Elm(subType);
+                    return new Elm(subType, location);
                 case 1:
-                    return new Maple(subType);
+                    return new Maple(subType, location);
                 default:
-                    return new Maple(subType);
+                    return new Maple(subType, location);
             }
 
         default:

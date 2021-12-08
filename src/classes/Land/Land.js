@@ -1,6 +1,8 @@
 class Land{
-    constructor(){
+    constructor(location){
         this.type = 'Land';
+        this.discovered = false;
+        this.location = location;
     }
 }
 

@@ -1,12 +1,19 @@
 import Resource from '../../Resource';
+import Image from './images/01.jpg';
 
 class Elm extends Resource{
-    constructor(parentType){
-        super(parentType);
+    constructor(parentType, location){
+        super(parentType, location, location);
         this.subType = 'Elm';
         this.icon = '*';
-        this.parentType = parentType;
-        
+        this.resource = {wood: Math.floor(Math.random() * 100) + 10}
+
+        this.credit = 'Pezibear';
+        this.getImage = this.getImage.bind(this);
+    }
+
+    getImage(){
+        return Image;
     }
 }
 

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Player from './classes/Player/Player';
 import World from './classes/World/World';
-
 import View from './components/View';
 
 const App = () => {
@@ -17,17 +16,13 @@ const App = () => {
 
   return (
     <>
-     
-        <div>
-          <h1>Untitled Community</h1>
-        </div>
-
+    <h1>Untitled Community</h1>
+    
         {world === undefined ? 
-          <><button onClick={() => {
-            setPlayer(new Player('Nick')); 
-            setWorld(new World())
-          }}>generate world</button><br /></> : 
-          <></>
+            <button onClick={() => {
+              setPlayer(new Player('Nick')); 
+              setWorld(new World())
+          }}>Start</button> : <></>
         }
 
         {player ?  <View subject={player.type} data={player} /> : <></>}  

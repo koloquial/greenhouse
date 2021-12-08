@@ -1,9 +1,10 @@
-class Resource{
+class Unit{
     constructor(parentType, location){
-        this.type = 'Resource';
+        this.type = 'Unit';
         this.parentType = parentType;
         this.location = location;
+        this.name;
     }
 }
 
-export default Resource;
+export default Unit;

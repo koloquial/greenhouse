@@ -1,8 +1,8 @@
 import Resource from '../../Resource';
 
 class Clearing extends Resource{
-    constructor(parentType){
-        super(parentType);
+    constructor(parentType, location){
+        super(parentType, location);
         this.subType = 'Clearing';
         this.icon = ' ';
     }
