@@ -5,7 +5,7 @@ class Maple extends Resource{
     constructor(parentType, location){
         super(parentType, location);
         this.subType = 'Maple';
-        this.icon = '*';
+        this.icon = <i class="fas fa-tree"></i>;
 
         this.resource = {wood: Math.floor(Math.random() * 50) + 10}
         this.credit = 'Jimmy Lau';

@@ -6,6 +6,36 @@ import Clearing from '../../classes/Resource/Clearing';
 
 const View = ({subject, data, setView, view, setArea, setTile, setForceUpdate, forceUpdate }) => {
     const [flip, setFlip] = useState(false);
+    const [nearBy, setNearBy] = useState();
+
+    useEffect(() => {
+        if(data.type === 'Unit'){
+            let north, south, east, west;
+            try{
+                north = view.grid[data.location[0] - 1][data.location[1]];
+            }catch(e){console.log('out of bounds', e)}
+    
+            try{
+                south = view.grid[data.location[0] + 1][data.location[1]];
+            }catch(e){console.log('out of bounds', e)}
+    
+            try{
+                east = view.grid[data.location[0]][data.location[1] + 1];
+            }catch(e){console.log('out of bounds', e)}
+    
+            try{
+                west = view.grid[data.location[0]][data.location[1] - 1];
+            }catch(e){console.log('out of bounds', e)}
+            
+            // setNearBy({north, south, east, west})
+            console.log('N', north);
+            console.log('S', south);
+            console.log('E', east);
+            console.log('W', west);
+            setNearBy({north, south, east, west})
+        } 
+    }, [forceUpdate])
+
 
 
     const getAction = (action) => {
@@ -61,7 +91,7 @@ try{
         <div className='container'>
             <div className={`${data.type === 'Resource' || data.type === 'Structure' || data.type === 'Unit' ? data.parentType : subject}-heading`}>
                 
-                    {subject ? subject : ''}
+                    {data.icon} {subject ? subject : ''}
 
                     <div style={{float: 'right'}}>
                         {subject !== 'World' && subject !== 'Player' ? `[${data.location[0]}, ${data.location[1]}]` : ''}
@@ -251,33 +281,29 @@ try{
                             </table>
 </div>
 
-<div style={{float: 'right', width: '100px'}}>
+<div style={{float: 'right'}}>
     <table>
-        <tr>
-            <td><button>action</button></td>
-        </tr>
-        <tr>
-            <td><button>action</button></td>
-        </tr>
-        <tr>
-            <td><button>action</button></td>
-        </tr>
+        {nearBy ? (<>
+            <tr>
+                <td></td>
+                <td><button className='controls'>{nearBy.north.icon}</button></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><button  className='controls'>{nearBy.west.icon}</button></td>
+                <td></td>
+                <td><button  className='controls'>{nearBy.east.icon}</button></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button  className='controls'>{nearBy.south.icon}</button></td>
+                <td></td>
+            </tr>
+        </>) : (<></>)} 
     </table>
     </div>
 
-    <div style={{float: 'center'}}>
-    <table>
-        <tr>
-            <td><button>Inventory</button></td>
-        </tr>
-        <tr>
-            <td><button>Equipment</button></td>
-        </tr>
-        <tr>
-            <td><button>action</button></td>
-        </tr>
-    </table>
-    </div>
+    
 </>
 )}
 

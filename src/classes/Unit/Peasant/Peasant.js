@@ -5,7 +5,7 @@ class Peasant extends Unit{
     constructor(parentType, location){
         super(parentType, location);
         this.subType = 'Peasant';
-        this.icon = 'P';
+        this.icon = <i class="fas fa-male"></i>;
 
         this.health = [25, 25];
         this.attack = 3;

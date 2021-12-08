@@ -5,7 +5,7 @@ class Garden extends Structure{
         super(parentType, location);
         this.subType = 'Garden';
         this.parentType = parentType;
-        this.icon = '%';
+        this.icon = <i class="fas fa-seedling"></i>;
     }
 }
 

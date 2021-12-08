@@ -5,7 +5,7 @@ class Tent extends Structure{
         super(parentType, location);
         this.subType = 'Tent';
         this.parentType = parentType;
-        this.icon = '#';
+        this.icon = <i class="fas fa-campground"></i>;
     }
 }
 

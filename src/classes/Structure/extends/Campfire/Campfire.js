@@ -5,7 +5,7 @@ class Campfire extends Structure{
         super(parentType, location);
         this.subType = 'Campfire';
         this.parentType = parentType;
-        this.icon = '^';
+        this.icon = <i class="fas fa-fire"></i>;
         this.actions = [this.hirePeasant];
         this.health = [100, 100];
         
