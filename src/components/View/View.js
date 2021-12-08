@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 
 import ReactCardFlip from 'react-card-flip';
+import { useEffect } from 'react/cjs/react.development';
 import Clearing from '../../classes/Resource/Clearing';
 
 const View = ({subject, data, setView, view, setArea, setTile, setForceUpdate, forceUpdate }) => {
     const [flip, setFlip] = useState(false);
+
 
     const getAction = (action) => {
         let oldX = data.location[0];
@@ -41,6 +43,8 @@ try{
             //set new location for object
             data.location = [x, y];
 
+            data.steps = data.steps + 1;
+
             //update
             setForceUpdate(forceUpdate + 1);
 
@@ -50,6 +54,7 @@ try{
     }catch(e){
         console.log('out of bounds')
     }
+
     }
 
     return (
@@ -204,6 +209,9 @@ try{
                         )
                     })}
                 </tr>
+                <br />
+                Steps: {data.steps}<br />
+                Endurance: <br />
                 </table>
                
           </div>
@@ -216,7 +224,18 @@ try{
     <table>
                                 <tr>
                                     <td>&nbsp;</td>
-                                    <td><button onClick={() => getAction('North')} className='controls'><i class="fas fa-caret-up fa-lg"></i></button></td>
+                                    <td><button 
+                                    onMouseDown={() => { 
+                                        getAction('North')
+                                    }} 
+
+                                        onMouseUp={() => {
+                                        console.log('up')
+                                        }} 
+                                            className='controls'>
+                                                <i class="fas fa-caret-up fa-lg"></i>
+                                                </button>
+                                            </td>
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
@@ -231,10 +250,25 @@ try{
                                 </tr>
                             </table>
 </div>
+
 <div style={{float: 'right', width: '100px'}}>
     <table>
         <tr>
             <td><button>action</button></td>
+        </tr>
+        <tr>
+            <td><button>action</button></td>
+        </tr>
+        <tr>
+            <td><button>action</button></td>
+        </tr>
+    </table>
+    </div>
+
+    <div style={{float: 'center'}}>
+    <table>
+        <tr>
+            <td><button>Inventory</button></td>
         </tr>
         <tr>
             <td><button>action</button></td>

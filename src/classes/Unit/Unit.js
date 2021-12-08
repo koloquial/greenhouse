@@ -6,6 +6,7 @@ class Unit{
         this.parentType = parentType;
         this.location = location;
         this.name = getName('Male')
+        this.steps = 0;
     }
 }
 
