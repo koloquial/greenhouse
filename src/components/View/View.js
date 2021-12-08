@@ -271,7 +271,7 @@ try{
             <td><button>Inventory</button></td>
         </tr>
         <tr>
-            <td><button>action</button></td>
+            <td><button>Equipment</button></td>
         </tr>
         <tr>
             <td><button>action</button></td>
