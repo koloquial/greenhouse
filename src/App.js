@@ -55,9 +55,9 @@ const App = () => {
             <br />
           </>
         }
-        {tile ?  <View subject={tile.subType} data={tile} view={view} setForceUpdate={setForceUpdate} forceUpdate={forceUpdate} setTile={setTile} /> : <></>}
-
         {view ? <View subject={area} data={view} setTile={setTile} /> : <></>}
+
+        {tile ?  <View subject={tile.subType} data={tile} view={view} setForceUpdate={setForceUpdate} forceUpdate={forceUpdate} setTile={setTile} world={world} /> : <></>}
 
         {world ? <View subject={'World'} data={world} setView={setView} setArea={setArea} /> : <></>}
 
