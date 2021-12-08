@@ -1,9 +1,56 @@
 import React, { useState } from 'react';
 
 import ReactCardFlip from 'react-card-flip';
+import Clearing from '../../classes/Resource/Clearing';
 
-const View = ({subject, data, setView, setArea, setTile}) => {
+const View = ({subject, data, setView, view, setArea, setTile, setForceUpdate, forceUpdate }) => {
     const [flip, setFlip] = useState(false);
+
+    const getAction = (action) => {
+        let oldX = data.location[0];
+        let oldY = data.location[1];
+        let x, y;
+
+        switch(action){
+        case 'North':
+                x = data.location[0] - 1;
+                y = data.location[1];
+            break;
+            case 'South':
+                x = data.location[0] + 1;
+                y = data.location[1];
+            break;
+            case 'East':
+                x = data.location[0];
+                y = data.location[1] + 1;
+            break;
+            case 'West':
+                x = data.location[0];
+                y = data.location[1] - 1;
+            break;
+        default: break;
+        }
+try{
+        if(view.grid[x][y].subType === 'Clearing'){
+            //set view location to object
+            view.grid[x][y] = data;
+
+            //set clearing to old location
+            view.grid[oldX][oldY] = new Clearing(view.subType, [oldX, oldY])
+
+            //set new location for object
+            data.location = [x, y];
+
+            //update
+            setForceUpdate(forceUpdate + 1);
+
+        }else{
+            console.log(`${view.grid[x][y].subType} is in the way.`);
+        }
+    }catch(e){
+        console.log('out of bounds')
+    }
+    }
 
     return (
         <div className='container'>
@@ -93,7 +140,7 @@ const View = ({subject, data, setView, setArea, setTile}) => {
                             return (
                                 <td>
                                     <center>
-                                        <div style={{border: '1px dotted black', padding: '10px'}}>
+                                        <div style={{border: '1px dotted black', padding: '5px'}}>
                                             <h4>
                                                 {key[0].toUpperCase() + key.slice(1)}
                                             </h4>
@@ -168,19 +215,19 @@ const View = ({subject, data, setView, setArea, setTile}) => {
 <div style={{float: 'left', width: '100px'}}>
     <table>
                                 <tr>
-                                    <td></td>
-                                    <td><button className='controls'></button></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td><button className='controls'></button></td>
                                     <td>&nbsp;</td>
-                                    <td><button className='controls'></button></td>
+                                    <td><button onClick={() => getAction('North')} className='controls'><i class="fas fa-caret-up fa-lg"></i></button></td>
+                                    <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                <td></td>
-                                    <td><button className='controls'></button></td>
-                                    <td></td>
+                                    <td><button onClick={() => getAction('West')} className='controls'><i class="fas fa-caret-left fa-lg"></i></button></td>
+                                    <td>&nbsp;</td>
+                                    <td><button onClick={() => getAction('East')} className='controls'><i class="fas fa-caret-right fa-lg"></i></button></td>
+                                </tr>
+                                <tr>
+                                <td>&nbsp;</td>
+                                    <td><button onClick={() => getAction('South')} className='controls'><i class="fas fa-caret-down fa-lg"></i></button></td>
+                                    <td>&nbsp;</td>
                                 </tr>
                             </table>
 </div>

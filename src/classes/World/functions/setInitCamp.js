@@ -32,7 +32,7 @@ const setInitCamp = (array) => {;
     //New Peasant
     let x5 = Math.floor(Math.random() * array.length);
     let y5 = Math.floor(Math.random() * array.length);
-    array[x][y].grid[x4][y4] = new Peasant(type, [x5, y5]);
+    array[x][y].grid[x5][y5] = new Peasant(type, [x5, y5]);
 
     return array;
 }
