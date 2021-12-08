@@ -2,6 +2,8 @@ import Campfire from "../../Structure/extends/Campfire";
 import Garden from "../../Structure/extends/Garden";
 import Tent from "../../Structure/extends/Tent";
 
+import Peasant from "../../Unit/Peasant";
+
 //NEED TO ADD CHECKS TO NOT OVERRWRITE OTHER OBJECTS
 
 const setInitCamp = (array) => {;
@@ -28,6 +30,9 @@ const setInitCamp = (array) => {;
     array[x][y].grid[x4][y4] = new Tent(type, [x4, y4]);
 
     //New Peasant
+    let x5 = Math.floor(Math.random() * array.length);
+    let y5 = Math.floor(Math.random() * array.length);
+    array[x][y].grid[x4][y4] = new Peasant(type, [x5, y5]);
 
     return array;
 }

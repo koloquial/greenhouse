@@ -1,8 +1,13 @@
+import React, { useState } from 'react';
+
+import ReactCardFlip from 'react-card-flip';
+
 const View = ({subject, data, setView, setArea, setTile}) => {
-    
+    const [flip, setFlip] = useState(false);
+
     return (
         <div className='container'>
-            <div className={`${data.type === 'Resource' || data.type === 'Structure' ? data.parentType : subject}-heading`}>
+            <div className={`${data.type === 'Resource' || data.type === 'Structure' || data.type === 'Unit' ? data.parentType : subject}-heading`}>
                 
                     {subject ? subject : ''}
 
@@ -12,9 +17,9 @@ const View = ({subject, data, setView, setArea, setTile}) => {
               
             </div>
 
-            <div className={`${data.type === 'Resource' || data.type === 'Structure' ? data.parentType : subject}-content`}>
+            <div className={`${data.type === 'Resource' || data.type === 'Structure' || data.type === 'Unit' ? data.parentType : subject}-content`}>
                 <center>
-                    {data !== undefined && data.type !== 'Resource' && data.type !== 'Player' && data.type !== 'Structure' ? 
+                    {data !== undefined && data.type !== 'Resource' && data.type !== 'Player' && data.type !== 'Structure' && data.type !== 'Unit'? 
                         (<table>
                             {data.grid.map(row => {
                                 return (
@@ -105,6 +110,98 @@ const View = ({subject, data, setView, setArea, setTile}) => {
                         </table>
                         
                         </div>
+                 
+                    </>) : (<></>)}
+
+                    {data.type === 'Unit' ? (<>
+                        {console.log('Unit', data)}
+
+                        
+
+                        <ReactCardFlip isFlipped={flip} flipDirection="horizontal">
+        
+                        <div className='imageFront' onClick={() => setFlip(true)}>
+                            <img 
+                                src={data.getImage()} 
+                                style={{width: '100%', opacity: .5, margin: '0'}} 
+                                title={`Image by ${data.credit} at Pixabay`} 
+                            />
+                        </div>
+          
+        
+
+        
+          <div className='imageBack'>
+              <div style={{float: 'right', display: 'inline-block'}}><button  onClick={() => setFlip(false)}>Back</button></div>
+              <div style={{float: 'left', display: 'inline-block'}}> <h2>{data.name}</h2></div>
+              <br /><br />
+              <hr />
+              <table style={{width: '100%'}}>
+                <tr>
+                <td><center><h4>Health</h4> <p>{data.health[0]} / {data.health[1]}</p></center></td>
+                <td>&nbsp;&nbsp;&nbsp;</td>
+                    <td><center><h4>Attack</h4> <p>{data.attack}</p></center></td>
+                    <td>&nbsp;&nbsp;&nbsp;</td>
+                    <td><center><h4>Defense</h4> <p>{data.defense}</p></center></td>
+                    <td>&nbsp;&nbsp;&nbsp;</td>
+                    <td><center><h4>Speed</h4> <p>{data.speed}</p></center></td>
+                </tr>
+                <br />
+                <tr>
+                    {Object.keys(data.starMap).map(key => {
+                        return (
+                            <>
+                                <td><center><h4>{key[0].toUpperCase() + key.slice(1)}</h4><p>{data.starMap[key][0]} / {data.starMap[key][1]}</p></center></td>
+                                <td>&nbsp;&nbsp;&nbsp;</td>
+                            </>
+                        )
+                    })}
+                </tr>
+                </table>
+               
+          </div>
+        
+      </ReactCardFlip>
+
+{flip ? (<></>) : (
+<>
+<div style={{float: 'left', width: '100px'}}>
+    <table>
+                                <tr>
+                                    <td></td>
+                                    <td><button className='controls'></button></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td><button className='controls'></button></td>
+                                    <td>&nbsp;</td>
+                                    <td><button className='controls'></button></td>
+                                </tr>
+                                <tr>
+                                <td></td>
+                                    <td><button className='controls'></button></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+</div>
+<div style={{float: 'right', width: '100px'}}>
+    <table>
+        <tr>
+            <td><button>action</button></td>
+        </tr>
+        <tr>
+            <td><button>action</button></td>
+        </tr>
+        <tr>
+            <td><button>action</button></td>
+        </tr>
+    </table>
+    </div>
+</>
+)}
+
+
+                        
                  
                     </>) : (<></>)}
 
