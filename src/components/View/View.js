@@ -123,7 +123,7 @@ const View = ({subject, data, setView, setArea, setTile}) => {
                         <div className='imageFront' onClick={() => setFlip(true)}>
                             <img 
                                 src={data.getImage()} 
-                                style={{width: '100%', opacity: .5, margin: '0'}} 
+                                style={{width: '100%', opacity: .5, margin: '0', cursor: 'pointer'}} 
                                 title={`Image by ${data.credit} at Pixabay`} 
                             />
                         </div>
