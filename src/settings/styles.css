@@ -84,8 +84,8 @@ h1, h2, h3, h4, h5, p{
 .Forest-disabled{
     display: inline-block;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     vertical-align: top;
     background-color: rgba(42, 78, 39, .1);
 }
@@ -100,8 +100,8 @@ h1, h2, h3, h4, h5, p{
 .Forest{
     display: inline-block;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     vertical-align: top;
     background-color: rgba(42, 78, 39, .8);
 }
@@ -127,8 +127,8 @@ h1, h2, h3, h4, h5, p{
 .Plains-disabled{
     display: inline-block;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     vertical-align: top;
     background-color: rgba(216, 196, 116, .1);
 }
@@ -143,8 +143,8 @@ h1, h2, h3, h4, h5, p{
 .Plains{
     display: inline-block;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     vertical-align: top;
     margin: 0;
     padding: 0;
@@ -172,8 +172,8 @@ h1, h2, h3, h4, h5, p{
 .Swamp-disabled{
     display: inline-block;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     vertical-align: top;
     background-color: rgba(50, 49, 45, .1);
 }
@@ -188,8 +188,8 @@ h1, h2, h3, h4, h5, p{
 .Swamp{
     display: inline-block;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     vertical-align: top;
     background-color: rgba(50, 49, 45, .8);
 }
@@ -215,8 +215,8 @@ h1, h2, h3, h4, h5, p{
 .Island-disabled{
     display: inline-block;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     vertical-align: top;
     background-color: rgba(31, 68, 126, .1);
 }
@@ -231,8 +231,8 @@ h1, h2, h3, h4, h5, p{
 .Island{
     display: inline-block;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     vertical-align: top;
     background-color: rgba(31, 68, 126, .8);
 }
@@ -258,8 +258,8 @@ h1, h2, h3, h4, h5, p{
 .Mountain-disabled{
     display: inline-block;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     vertical-align: top;
     background-color: rgba(166, 51, 49, .1);
 }
@@ -274,8 +274,8 @@ h1, h2, h3, h4, h5, p{
 .Mountain{
     display: inline-block;
     cursor: pointer;
-    width: 25px;
-    height: 25px;
+    width: 26px;
+    height: 26px;
     vertical-align: top;
     background-color: rgba(166, 51, 49, .8);
 }

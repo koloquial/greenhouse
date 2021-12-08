@@ -4,28 +4,29 @@ import ReactCardFlip from 'react-card-flip';
 import { useEffect } from 'react/cjs/react.development';
 import Clearing from '../../classes/Resource/Clearing';
 
-const View = ({subject, data, setView, view, setArea, setTile, setForceUpdate, forceUpdate }) => {
+const View = ({subject, data, setView, view, setArea, setTile, setForceUpdate, forceUpdate, world }) => {
     const [flip, setFlip] = useState(false);
-    const [nearBy, setNearBy] = useState();
+    const [nearBy, setNearBy] = useState({north: {}, south: {}, east: {}, west: {}});
 
     useEffect(() => {
         if(data.type === 'Unit'){
             let north, south, east, west;
+
             try{
                 north = view.grid[data.location[0] - 1][data.location[1]];
-            }catch(e){console.log('out of bounds', e)}
+            }catch(e){}
     
             try{
                 south = view.grid[data.location[0] + 1][data.location[1]];
-            }catch(e){console.log('out of bounds', e)}
+            }catch(e){}
     
             try{
                 east = view.grid[data.location[0]][data.location[1] + 1];
-            }catch(e){console.log('out of bounds', e)}
+            }catch(e){}
     
             try{
                 west = view.grid[data.location[0]][data.location[1] - 1];
-            }catch(e){console.log('out of bounds', e)}
+            }catch(e){}
             
             // setNearBy({north, south, east, west})
             console.log('N', north);
@@ -35,8 +36,6 @@ const View = ({subject, data, setView, view, setArea, setTile, setForceUpdate, f
             setNearBy({north, south, east, west})
         } 
     }, [forceUpdate])
-
-
 
     const getAction = (action) => {
         let oldX = data.location[0];
@@ -83,6 +82,39 @@ try{
         }
     }catch(e){
         console.log('out of bounds')
+        //check to see if there is view to action
+        switch(action){
+            case 'North':
+                try{
+                    console.log('world', world)
+                    console.log('view', view)
+                    let x = view.location[0] - 1;
+                    let y = view.location[1];
+
+                    if(world.grid[x][y].grid[11][data.location[1]].subType === 'Clearing'){
+                        console.log('move valid');
+                         //set view location to object
+            view.grid[x][y] = data;
+
+            //set clearing to old location
+            view.grid[oldX][oldY] = new Clearing(view.subType, [oldX, oldY])
+
+            //set new location for object
+            data.location = [x, y];
+
+            data.steps = data.steps + 1;
+
+            //update
+            setForceUpdate(forceUpdate + 1);
+                    }else{
+                        console.log(`${world.grid[x][y].grid[11][data.location[1]].subType} blocks way.`)
+                    }
+                }catch(e){
+                    console.log('off world')
+                }
+                break;
+            default: break;
+        }
     }
 
     }
@@ -283,23 +315,47 @@ try{
 
 <div style={{float: 'right'}}>
     <table>
-        {nearBy ? (<>
-            <tr>
-                <td></td>
-                <td><button className='controls'>{nearBy.north.icon}</button></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td><button  className='controls'>{nearBy.west.icon}</button></td>
-                <td></td>
-                <td><button  className='controls'>{nearBy.east.icon}</button></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><button  className='controls'>{nearBy.south.icon}</button></td>
-                <td></td>
-            </tr>
-        </>) : (<></>)} 
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                {nearBy.north !== undefined ? 
+                    (<button className='controls'>{nearBy.north.icon}</button>) 
+                    : (<button className='controls'>&nbsp;</button>)
+                }
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+
+        <tr>
+            <td>
+            {nearBy.west !== undefined ? 
+                    (<button className='controls'>{nearBy.west.icon}</button>) 
+                    : (<button className='controls'>&nbsp;</button>)
+                }
+            </td>
+            <td>&nbsp;</td>
+            <td>
+            {nearBy.east !== undefined ? 
+                    (<button className='controls'>{nearBy.east.icon}</button>) 
+                    : (<button className='controls'>&nbsp;</button>)
+                }
+            </td>
+        </tr>
+        
+
+        <tr>
+            <td>&nbsp;</td>
+            
+            <td>
+                {nearBy.south !== undefined ? 
+                    (<button className='controls'>{nearBy.south.icon}</button>) 
+                    : (<button className='controls'>&nbsp;</button>)
+                }
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+       
+        
     </table>
     </div>
 
