@@ -2,6 +2,12 @@ body{
     background-color: rgb(177, 177, 177);
 }
 
+table, tr, td{
+    margin: 0;
+    padding: 0;
+    vertical-align: top;
+}
+
 .container{
     display: inline-block;
     margin: 5px;
@@ -13,14 +19,14 @@ body{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-.World-heading, .Player-heading{
+.World-heading, .Player-heading, .Area-heading{
     width: 100%;
     color: whitesmoke;
     font-size: 20px;
     background-color: slategrey;
 }
 
-.World-content, .Player-content{
+.World-content, .Player-content, .Area-content{
     background-image: linear-gradient(120deg, rgba(112, 128, 144, .2), rgba(112, 128, 144, .4));
     padding: 5px;
     height: 313px;
@@ -28,20 +34,9 @@ body{
     border: 1px solid slategrey;
 }
 
-.Area-heading{
-    width: 100%;
-    color: whitesmoke;
-    font-size: 20px;
-    background-color: slategrey;
-}
-
-.Area-content{
-    background-image: linear-gradient(120deg, rgba(112, 128, 144, .2), rgba(112, 128, 144, .4));
-    padding: 5px;
-    height: 313px;
-    border: 1px solid slategrey;
-}
-
+/*******************************************************
+    F O R E S T
+*******************************************************/
 .Forest-heading{
     width: 100%;
     color: whitesmoke;
@@ -57,7 +52,7 @@ body{
 }
 
 .Forest-icon{
-    color: white;
+    color: whitesmoke;
     font-size: small;
     margin: 0;
     padding: 0;
@@ -73,28 +68,31 @@ body{
     background-color: rgba(42, 78, 39, .8);
 }
 
-.Plain-heading{
+/*******************************************************
+    P L A I N S
+*******************************************************/
+.Plains-heading{
     width: 100%;
     color: black;
     font-size: 20px;
     background-color: rgb(216, 196, 116);
 }
 
-.Plain-content{
+.Plains-content{
     background-image: linear-gradient(120deg, rgba(153, 141, 94, .2), rgba(153, 141, 94, .4));
     padding: 5px;
     height: 313px;
     border: 1px solid rgb(153, 141, 94);
 }
 
-.Plain-icon{
+.Plains-icon{
     color: black;
     font-size: small;
     margin: 0;
     padding: 0;
 }
 
-.Plain{
+.Plains{
     display: inline-block;
     cursor: pointer;
     width: 20px;
@@ -104,36 +102,105 @@ body{
     background-color: rgba(216, 196, 116, .8);
 }
 
-
-.Plain-heading{
+/*******************************************************
+   S W A M P
+*******************************************************/
+.Swamp-heading{
     width: 100%;
-    color: black;
+    color: whitesmoke;
     font-size: 20px;
-    background-color: rgb(216, 196, 116);
+    background-color: rgb(50, 49, 45);
 }
 
-.Plain-content{
-    background-image: linear-gradient(120deg, rgba(153, 141, 94, .2), rgba(153, 141, 94, .4));
+.Swamp-content{
+    background-image: linear-gradient(120deg, rgba(50, 49, 45, .2), rgba(50, 49, 45, .4));
     padding: 5px;
     height: 313px;
-    border: 1px solid rgb(153, 141, 94);
+    border: 1px solid rgb(50, 49, 45);
 }
 
-.Plain-icon{
-    color: black;
+.Swamp-icon{
+    color: whitesmoke;
     font-size: small;
     margin: 0;
     padding: 0;
 }
 
-.Plain{
+.Swamp{
     display: inline-block;
     cursor: pointer;
     width: 20px;
     height: 20px;
-    background-color: rgba(216, 196, 116, .8);
+    background-color: rgba(50, 49, 45, .8);
 }
 
+/*******************************************************
+   I S L A N D
+*******************************************************/
+.Island-heading{
+    width: 100%;
+    color: whitesmoke;
+    font-size: 20px;
+    background-color: rgb(31, 68, 126);
+}
+
+.Island-content{
+    background-image: linear-gradient(120deg, rgba(31, 68, 126, .2), rgba(31, 68, 126, .4));
+    padding: 5px;
+    height: 313px;
+    border: 1px solid rgb(31, 68, 126);
+}
+
+.Island-icon{
+    color: whitesmoke;
+    font-size: small;
+    margin: 0;
+    padding: 0;
+}
+
+.Island{
+    display: inline-block;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(31, 68, 126, .8);
+}
+
+/*******************************************************
+   M O U N T A I N
+*******************************************************/
+.Mountain-heading{
+    width: 100%;
+    color: whitesmoke;
+    font-size: 20px;
+    background-color: rgb(166, 51, 49);
+}
+
+.Mountain-content{
+    background-image: linear-gradient(120deg, rgba(166, 51, 49, .2), rgba(166, 51, 49, .4));
+    padding: 5px;
+    height: 313px;
+    border: 1px solid rgb(166, 51, 49);
+}
+
+.Mountain-icon{
+    color: whitesmoke;
+    font-size: small;
+    margin: 0;
+    padding: 0;
+}
+
+.Mountain{
+    display: inline-block;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background-color: rgba(166, 51, 49, .8);
+}
+
+/*******************************************************
+    R E S O U R C E S
+*******************************************************/
 .Clearing-icon{
     color: black;
     font-size: small;
@@ -141,10 +208,3 @@ body{
     padding: 0;
     
 }
-
-table, tr, td{
-    margin: 0;
-    padding: 0;
-    vertical-align: top;
-}
-

@@ -34,14 +34,10 @@ const App = () => {
         
         {world ? <View subject={'World'} data={world} setView={setView} setArea={setArea} /> : <></>}
         
-        <br />
-        
         {view ? <View subject={area} data={view} setTile={setTile} /> : <></>}
 
         {tile ?  <View subject={tile.subType} data={tile} /> : <></>}
        
-
-   
     </>
   );
 }

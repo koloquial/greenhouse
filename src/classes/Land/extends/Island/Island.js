@@ -1,10 +1,10 @@
 import Land from '../../Land'
 import fillGrid from '../../functions/fillGrid';
 
-class Plain extends Land{
+class Island extends Land{
     constructor(){
         super();
-        this.subType = 'Plain';
+        this.subType = 'Island';
         this.size = 12;
         this.grid = fillGrid(this.size, this.subType);
 
@@ -13,4 +13,4 @@ class Plain extends Land{
     
 }
 
-export default Plain;
+export default Island;
