@@ -316,39 +316,6 @@ try{
                         </table>) : (<></>)
                     }
 
-                    {data.type === 'Resource' ? (<>
-                        <img 
-                            src={data.getImage()} 
-                            style={{width: '100%', opacity: .5, margin: '0'}} 
-                            title={`Image by ${data.credit} at Pixabay`} 
-                        />
-
-                        <div style={{float: 'left'}}>
-                        <table>
-                            <tr>
-                            {Object.keys(data.resource).map(key => {
-                            return (
-                                <td>
-                                    <center>
-                                        <div style={{border: '1px dotted black', padding: '5px'}}>
-                                            <h4>
-                                                {key[0].toUpperCase() + key.slice(1)}
-                                            </h4>
-                                            <br />
-                                            <p>
-                                                {data.resource[key]}
-                                            </p>
-                                        </div>
-                                    </center>
-                                 </td>
-                            )
-                        })}
-                            </tr>
-                        </table>
-                        
-                        </div>
-                 
-                    </>) : (<></>)}
 
                     {data.type === 'Unit' ? (<>
 

@@ -1,0 +1,66 @@
+/*******************************************************
+   M O U N T A I N
+*******************************************************/
+@import './palette.scss';
+
+.Mountain-heading{
+    background-color: $red;
+    color: $white;
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 0px;
+}
+
+.Mountain-content{
+    padding: 0px;
+    margin-top: 5px;
+    height: 301px;
+}
+
+.Mountain-resource{
+    background-color: $red_fade;
+    padding: 0px;
+    margin-top: 5px;
+    height: 300px;
+}
+
+.Mountain-resourceItem{
+    border: 1px dotted $red;
+    background-color: $red_fade;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.Mountain-resourceItem:hover {
+    background-color: $white;
+    transition: 0.3s;
+}
+
+.Mountain-disabled{
+    display: inline-block;
+    background-color: $red_disabled;
+    vertical-align: top;
+    width: 19px;
+    height: 19px;
+    margin: 0;
+    padding: 3px;
+}
+
+.Mountain-icon{
+    display: inline;
+    color: $white;
+    font-size: small;
+}
+
+.Mountain{
+    display: inline-block;
+    background-color: $red_fade;
+    vertical-align: top;
+    cursor: pointer;
+    width: 19px;
+    height: 19px;
+    margin: 0;
+    padding: 3px;
+}

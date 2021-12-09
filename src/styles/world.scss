@@ -1,0 +1,20 @@
+/*******************************************************
+   W O R L D
+*******************************************************/
+@import './palette.scss';
+
+.World-heading {
+    color: $white;
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: $general;
+}
+
+.World-content {
+    background: $general_fade;
+    padding: 0px;
+    margin-top: 5px;
+    height: 301px;
+    vertical-align: top;
+}

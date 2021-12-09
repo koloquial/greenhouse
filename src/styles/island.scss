@@ -1,0 +1,68 @@
+/*******************************************************
+   I S L A N D
+*******************************************************/
+@import './palette.scss';
+
+.Island-heading{
+    background-color: $blue;
+    color: $white;
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 0px;
+}
+
+.Island-content{
+    padding: 0px;
+    margin-top: 5px;
+    height: 301px;
+}
+
+.Island-resource{
+    background-color: $blue_fade;
+    padding: 0px;
+    margin-top: 5px;
+    height: 300px;
+}
+
+.Island-resourceItem{
+    border: 1px dotted $blue;
+    background-color: $blue_fade;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.Island-resourceItem:hover {
+    background-color: $white;
+    transition: 0.3s;
+}
+  
+.Island-disabled{
+    display: inline-block;
+    background-color: $blue_disabled;
+    vertical-align: top;
+    width: 19px;
+    height: 19px;
+    margin: 0;
+    padding: 3px;
+}
+
+.Island-icon{
+    display: inline;
+    color: $white;
+    font-size: small;
+}
+
+.Island{
+    display: inline-block;
+    background-color: $blue_fade;
+    vertical-align: top;
+    cursor: pointer;
+    width: 19px;
+    height: 19px;
+    margin: 0;
+    padding: 3px;
+}
+
+  

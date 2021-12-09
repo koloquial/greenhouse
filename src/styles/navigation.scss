@@ -1,0 +1,27 @@
+/*******************************************************
+   N A V I G A T I O N
+*******************************************************/
+@import './palette.scss';
+
+.tab {
+    background-color: $general_fade;
+    overflow: hidden;
+    border: 0;
+}
+  
+.tab button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+  
+.tab button:hover {
+    background-color: $white;
+}
+  
+.tab button:active {
+    background-color: transparent;
+}

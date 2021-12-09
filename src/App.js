@@ -7,6 +7,7 @@ import GenerateWorld from './components/GenerateWorld';
 import PlayerTile from './components/PlayerTile';
 import WorldTile from './components/WorldTile/WorldTile';
 import SubGridTile from './components/SubGridTile/SubGridTile';
+import ClassTile from './components/ClassTile';
 
 const App = () => {
   const [world, setWorld] = useState();
@@ -28,15 +29,9 @@ const App = () => {
       
       <GenerateWorld world={world} setWorld={setWorld} setPlayer={setPlayer} />
       
-        {/* {view ? 
-          <View 
-            subject={area} 
-            data={view} 
-            
-            setTile={setTile} setView={setView} /> 
-          : <></>
-        } */}
-
+        <ClassTile 
+          tile={tile}
+        />
 
           <SubGridTile 
             view={view}

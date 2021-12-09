@@ -1,0 +1,22 @@
+/*******************************************************
+   D E F A U L T
+*******************************************************/
+@import './palette.scss';
+
+body {
+    background-color: $white;
+}
+
+table, tr, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: top;
+    border-collapse: collapse;
+}
+
+h1, h2, h3, h4, h5, p {
+    display: 'inline-block';
+    margin: 0;
+    padding: 0;
+}

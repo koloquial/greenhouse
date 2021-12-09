@@ -14,10 +14,11 @@ const PlayerTile = ({ player, world, setView, setTile }) => {
                 </div>
                 <div className='Player-content'>
                     <div className='tab'>
-                        <button className="tablinks" onClick={() => setActive('Resources')}>Resources</button>
-                        <button className="tablinks" onClick={() => setActive('Structures')}>Structures</button>
-                        <button className="tablinks" onClick={() => setActive('Units')}>Units</button>
+                        <button onClick={() => setActive('Resources')}><i className="fas fa-gem" title='Resources'></i></button>
+                        <button onClick={() => setActive('Structures')}><i className="fas fa-campground" title='Structures'></i></button>
+                        <button onClick={() => setActive('Units')}><i className="fas fa-male" title='Units'></i></button>
                     </div>
+                    
     
                     {active === 'Resources' ?
                         <table>
@@ -74,11 +75,11 @@ const PlayerTile = ({ player, world, setView, setTile }) => {
                                     return (
                                         <td>
                                             <center>
-                                                <div className='container-small' style={{cursor: 'pointer'}} onClick={() => {
+                                                <div className={`${structure.parentType}-resourceItem`} title={structure.subType} onClick={() => {
                                                     setView(world.grid[structure.worldLocation[0]][structure.worldLocation[1]]);
                                                     setTile(structure);
                                                 }}>
-                                                    {structure.subType}<br /><br />
+                                                    {structure.icon}<br />
                                                     [{structure.worldLocation[0]}, {structure.worldLocation[1]}]
                                                 </div>
                                             </center>
@@ -97,11 +98,11 @@ const PlayerTile = ({ player, world, setView, setTile }) => {
                                     return (
                                         <td>
                                             <center>
-                                                <div className='container-small' onClick={() => {
+                                                <div className={`${unit.parentType}-resourceItem`} title={unit.subType} onClick={() => {
                                                     setView(world.grid[unit.worldLocation[0]][unit.worldLocation[1]]);
                                                     setTile(unit);
                                                 }}>
-                                                    {unit.subType}<br /><br />
+                                                    {unit.icon}<br />
                                                     [{unit.worldLocation[0]}, {unit.worldLocation[1]}]
                                                 </div>
                                             </center>

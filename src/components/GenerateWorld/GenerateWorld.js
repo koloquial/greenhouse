@@ -14,7 +14,7 @@ const GenerateWorld = ({ world, setWorld, setPlayer }) => {
              
                 <button onClick={() => {
                     let modelWorld = new World();
-                    let model = new Player('Nick');
+                    let model = new Player('Dashboard');
                     model.getStructures(modelWorld);
                     setPlayer(model); 
                     setWorld(modelWorld);
