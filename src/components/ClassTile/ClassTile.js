@@ -1,6 +1,6 @@
 //tile types
-import Resource from './tileType/Resource';
-import Structure from './tileType/Structure';
+import Resource from './TileType/Resource';
+import Structure from './TileType/Structure';
 
 const ClassTile = ({ tile }) => {
     if(tile === undefined){
