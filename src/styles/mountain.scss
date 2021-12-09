@@ -20,17 +20,18 @@
 
 .Mountain-resource{
     background-color: $red_fade;
-    padding: 0px;
-    margin-top: 5px;
-    height: 300px;
+    padding: 5px;
+    height: 80px;
 }
 
 .Mountain-resourceItem{
     border: 1px dotted $red;
     background-color: $red_fade;
-    padding: 5px;
     cursor: pointer;
     transition: 0.3s;
+    display: inline-block;
+    margin: 5px;
+    padding: 5px;
 }
 
 .Mountain-resourceItem:hover {

@@ -20,14 +20,14 @@
 
 .Forest-resource{
     background-color: $green_fade;
-    padding: 0px;
-    margin-top: 5px;
-    height: 300px;
+    padding: 5px;
+    height: 80px;
 }
 
 .Forest-resourceItem{
     border: 1px dotted $green;
     background-color: $green_fade;
+    margin: 5px;
     padding: 5px;
     cursor: pointer;
     transition: 0.3s;

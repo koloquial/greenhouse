@@ -243,79 +243,7 @@ try{
     }
 
     return (
-        <div className='container'>
-            <div className={`${data.type === 'Resource' || data.type === 'Structure' || data.type === 'Unit' ? data.parentType : subject}-heading`}>
-                
-                    {data.icon} {subject ? subject : ''}
-
-                    <div style={{float: 'right'}}>
-                        {subject !== 'World' && subject !== 'Player' ? `[${data.location[0]}, ${data.location[1]}]` : ''}
-                    </div>
-              
-            </div>
-
-            <div className={`${data.type === 'Resource' || data.type === 'Structure' || data.type === 'Unit' ? data.parentType : subject}-content`}>
-                <center>
-                    {data !== undefined && data.type !== 'Resource' && data.type !== 'Player' && data.type !== 'Structure' && data.type !== 'Unit'? 
-                        (<table>
-                            {data.grid.map(row => {
-                                return (
-                                    <tr>
-                                        {row.map(tile => {
-                                            return (
-                                                <td>
-                                                    {tile.discovered || tile.parentType ? (<>
-                                                    
-                                                        <div className={tile.parentType ? tile.parentType : tile.subType} onClick={() => {
-                                                        if(tile.parentType){
-                                                            setTile(tile);
-                                                            
-                                                        }else{
-                                                            setView(tile);
-                                                            setArea(tile.subType)
-                                                            setTile();
-                                                        }
-                                                    }}>
-                                                        <center>
-                                                            {tile.icon ? 
-                                                                <p className={tile.parentType ? `${tile.parentType}-icon` : `${tile.subType}-icon`}>
-                                                                    {tile.icon}
-                                                                </p> : 
-
-                                                                <p className={tile.parentType ? `${tile.parentType}-icon` : `${tile.subType}-icon`}>
-                                                                    &nbsp;
-                                                                </p>
-                                                            }
-                                                        </center>
-                                                    </div>
-                                                    
-                                                    </>) : (<>
-                                                    
-                                                        <div className={tile.parentType ? `${tile.parentType}-disabled` : `${tile.subType}-disabled`}>
-                                                        <center>
-                                                            {tile.icon ? 
-                                                                <p className={tile.parentType ? `${tile.parentType}-icon` : `${tile.subType}-icon`}>
-                                                                    {tile.icon}
-                                                                </p> : 
-
-                                                                <p className={tile.parentType ? `${tile.parentType}-icon` : `${tile.subType}-icon`}>
-                                                                    &nbsp;
-                                                                </p>
-                                                            }
-                                                        </center>
-                                                    </div>
-                                                    
-                                                    </>)}
-                                                    
-                                                </td>
-                                            )
-                                        })}
-                                    </tr>
-                                )
-                            })}
-                        </table>) : (<></>)
-                    }
-
+        
 
                     {data.type === 'Unit' ? (<>
 
@@ -446,35 +374,3 @@ try{
     </table>
     </div>
 
-    
-</>
-)}
-
-
-                        
-                 
-                    </>) : (<></>)}
-
-
-
-                    {data.type === 'Structure' ? (<>
-
-                    {data.actions !== undefined ? (<>
-                            {data.actions.map(action => {
-                            return (
-                                <button onClick={() => {
-                                    action();
-                                }}>do this</button>
-                            )
-                        })}
-                        </>) : (<></>)}
-                    </>) : (<></>)}
-
-                </center>
-              
-            </div>
-        </div>
-    )
-}
-
-export default View;

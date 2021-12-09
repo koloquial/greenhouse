@@ -20,16 +20,16 @@
 
 .Plains-resource{
     background-color: $yellow_fade;
-    padding: 0px;
-    margin-top: 5px;
-    height: 300px;
-    cursor: pointer;
+    padding: 5px;
+    height: 80px;
 }
 
 .Plains-resourceItem{
     border: 1px dotted $yellow;
     background-color: $yellow_fade;
+    margin: 5px;
     padding: 5px;
+    cursor: pointer;
     transition: 0.3s;
 }
 

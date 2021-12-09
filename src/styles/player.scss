@@ -18,3 +18,17 @@
     height: 301px;
     vertical-align: top;
 }
+
+.Player-resourceItem{
+    border: 1px dotted $general;
+    background-color: $general_fade;
+    margin: 5px;
+    padding: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.Player-resourceItem:hover {
+    background-color: $white;
+    transition: 0.3s;
+}
