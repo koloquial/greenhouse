@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ReactCardFlip from 'react-card-flip';
-import Info from '../Info';
+import Info from './Info'
 
 const CardFlip = ({ tile }) => {
     const [flip, setFlip] = useState(false);
@@ -8,7 +8,7 @@ const CardFlip = ({ tile }) => {
     return (
         <ReactCardFlip isFlipped={flip} flipDirection="horizontal">
 
-            <div onClick={() => setFlip(true)}>
+            <div style={{cursor: 'pointer'}} onClick={() => setFlip(true)}>
                 <img 
                     src={tile.getImage()} 
                     style={{width: '100%', opacity: .7, margin: '0'}} 
@@ -16,10 +16,8 @@ const CardFlip = ({ tile }) => {
                 />
             </div>
 
-            <div>
-                <Info tile={tile} setFlip={setFlip} />
-            </div>
-
+            <Info tile={tile} setFlip={setFlip} />
+          
         </ReactCardFlip>
     )
 }

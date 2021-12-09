@@ -4,19 +4,85 @@
 @import './palette.scss';
 
 body {
-    background-color: $white;
+   background-color: $white;
 }
 
 table, tr, td {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    vertical-align: top;
-    border-collapse: collapse;
+   margin: 0;
+   padding: 0;
+   border: 0;
+   vertical-align: top;
+   border-collapse: collapse;
 }
 
 h1, h2, h3, h4, h5, p {
-    display: 'inline-block';
-    margin: 0;
-    padding: 0;
+   display: 'inline-block';
+   margin: 0;
+   padding: 0;
 }
+
+.container{
+   display: inline-block;
+   margin: 5px;
+   padding: 5px;
+   width: 302px;
+   height: 330px;
+   vertical-align: top;
+   background-color: white;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.image-heading{
+   margin-top: 5px;
+   margin-bottom: 5px;
+}
+
+.content{
+   padding: 0px;
+   margin-top: 5px;
+   height: 301px;
+}
+
+.icon{
+   display: inline;
+   color: $white;
+   font-size: small;
+}
+
+.general-bg{
+   background-color: $general_fade;
+   height: 252px;
+   margin-top: 5px;
+}
+
+.tab {
+   background-color: $general_fade;
+   overflow: hidden;
+   border: 0;
+   margin-top: 5px;
+}
+ 
+.tab button {
+   background-color: transparent;
+   border: none;
+   outline: none;
+   cursor: pointer;
+   padding: 14px 16px;
+   transition: 0.3s;
+   &:hover {
+       background-color: $white;
+       transition: 0.3s;
+   }
+   &:active {
+       background-color: $white;
+       transition: 0.3s;
+   }
+}
+
+.controls{
+   width: 25px;
+   height: 25px;
+   margin: 0;
+   padding: 0;
+}
+

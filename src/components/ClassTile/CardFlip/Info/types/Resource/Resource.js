@@ -1,7 +1,7 @@
-const Structure = ({ tile, setFlip }) => {
+const Resource = ({ tile, setFlip }) => {
 
     return (
-        <div>
+        <div className={`${tile.parentType}-info`}>
             <div style={{float: 'right', display: 'inline-block'}}>
                 <button  onClick={() => setFlip(false)}>Back</button>
             </div>
@@ -19,4 +19,4 @@ const Structure = ({ tile, setFlip }) => {
 
 }
 
-export default Structure;
+export default Resource;

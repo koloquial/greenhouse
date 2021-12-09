@@ -2,71 +2,24 @@
    P L A I N S
 *******************************************************/
 @import './palette.scss';
-
-.Plains-heading{
-    background-color: $yellow;
-    color: $black;
-    font-size: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border: 0px;
-}
-
-.Plains-content{
-    padding: 0px;
-    margin-top: 5px;
-    height: 301px;
-}
-
-.Plains-resource{
-    background-color: $yellow_fade;
-    padding: 5px;
-    height: 80px;
-}
-
-.Plains-info{
-    background-color: $yellow_fade;
-    border: 1px dotted $yellow;
-    padding: 5px;
-}
-
-.Plains-resourceItem{
-    border: 1px dotted $yellow;
-    background-color: $yellow_fade;
-    margin: 5px;
-    padding: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.Plains-resourceItem:hover {
-    background-color: $white;
-    transition: 0.3s;
-}
-
-.Plains-disabled{
-    display: inline-block;
-    background-color: $yellow_disabled;
-    vertical-align: top;
-    width: 19px;
-    height: 19px;
-    margin: 0;
-    padding: 3px;
-}
-
-.Plains-icon{
-    display: inline;
-    color: $white;
-    font-size: small;
-}
+@import './mixins.scss';
 
 .Plains{
-    display: inline-block;
-    background-color: $yellow_fade;
-    vertical-align: top;
-    cursor: pointer;
-    width: 19px;
-    height: 19px;
-    margin: 0;
-    padding: 3px;
+    @include proto();
+    background-color: $Plains_fade;
+}
+.Plains-heading{
+    @include heading($Plains);
+}
+.Plains-resource{
+    @include resource($Plains_fade);
+}
+.Plains-info{
+    @include info($Plains, $Plains_fade);
+}
+.Plains-resourceItem{
+    @include resourceItem($Plains, $Plains_fade);
+}
+.Plains-disabled{
+    @include disabledLand($Plains_disabled);
 }

@@ -8,7 +8,7 @@ const WorldTile = ({ world, setView, setTile }) => {
                 <div className='World-heading'>
                     World Map
                 </div>
-                <div className='World-content'>
+                <div className='content'>
                     <center>
                         <table>
                             {world.grid.map(row => {

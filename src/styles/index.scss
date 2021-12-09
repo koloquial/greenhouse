@@ -1,5 +1,5 @@
-@import './default.scss';
 @import './palette.scss';
+@import './default.scss';
 @import './navigation.scss';
 @import './world.scss';
 @import './player.scss';
@@ -8,42 +8,9 @@
 @import './swamp.scss';
 @import './plains.scss';
 @import './forest.scss';
+@import './mixins.scss';
 
-.imageBack{
-    margin: 0;
-    padding: 5px;
-    text-align: left;
-    border: 1px dotted black;
-}
 
-.imageFront{
-    margin: 0;
-    padding:0;
-    cursor: pointer;
-}
-
-.controls{
-    width: 25px;
-    height: 25px;
-    margin: 0;
-    padding: 0;
-}
-
-.container{
-    display: inline-block;
-    margin: 5px;
-    padding: 5px;
-    width: 302px;
-    height: 330px;
-    vertical-align: top;
-    background-color: white;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-}
-
-.image-heading{
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
 
 
 

@@ -8,7 +8,7 @@ const SubGridTile = ({ view, setTile }) => {
                 <div className={`${view.subType}-heading`}>
                     {view.subType}
                 </div>
-                <div className={`${view.subType}-content`}>
+                <div className='content'>
                     <center>
                         <table>
                             {view.grid.map(row => {

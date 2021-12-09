@@ -16,7 +16,7 @@ const ClassTile = ({ tile }) => {
                 <div className={`${tile.parentType}-heading`}>
                     {tile.subType}
                     <div style={{float: 'right'}}>
-                        <p className={`${tile.subType}-icon`}>{tile.icon}</p>
+                        <p className='icon'>{tile.icon}</p>
                     </div> 
                 </div>
 

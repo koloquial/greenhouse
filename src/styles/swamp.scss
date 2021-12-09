@@ -2,65 +2,24 @@
    S W A M P
 *******************************************************/
 @import './palette.scss';
-
-.Swamp-heading{
-    background-color: $black;
-    color: $white;
-    font-size: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border: 0px;
-}
-
-.Swamp-content{
-    padding: 0px;
-    margin-top: 5px;
-    height: 301px;
-}
-
-.Swamp-resource{
-    background-color: $black_fade;
-    padding: 5px;
-    height: 80px;
-}
-
-.Swamp-resourceItem{
-    border: 1px dotted $black;
-    background-color: $black_fade;
-    margin: 5px;
-    padding: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.Swamp-resourceItem:hover {
-    background-color: $white;
-    transition: 0.3s;
-}
-
-.Swamp-disabled{
-    display: inline-block;
-    background-color: $black_disabled;
-    vertical-align: top;
-    width: 19px;
-    height: 19px;
-    margin: 0;
-    padding: 3px;
-}
-
-.Swamp-icon{
-    display: inline;
-    color: $white;
-    font-size: small;
-}
+@import './mixins.scss';
 
 .Swamp{
-    display: inline-block;
-    background-color: $black_fade;
-    vertical-align: top;
-    cursor: pointer;
-    width: 19px;
-    height: 19px;
-    margin: 0;
-    padding: 3px;
+    @include proto();
+    background-color: $Swamp_fade;
+}
+.Swamp-heading{
+    @include heading($Swamp);
+}
+.Swamp-resource{
+    @include resource($Swamp_fade);
+}
+.Swamp-info{
+    @include info($Swamp, $Swamp_fade);
+}
+.Swamp-resourceItem{
+    @include resourceItem($Swamp, $Swamp_fade);
+}
+.Swamp-disabled{
+    @include disabledLand($Swamp_disabled);
 }

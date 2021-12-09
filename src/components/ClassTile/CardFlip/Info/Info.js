@@ -1,6 +1,6 @@
-import Unit from './InfoTypes/Unit'
-import Structure from './InfoTypes/Structure';
-import Resource from './InfoTypes/Resource';
+import Unit from './types/Unit'
+import Structure from './types/Structure';
+import Resource from './types/Resource';
 
 const Info = ({ tile, setFlip }) => {
     switch(tile.type){

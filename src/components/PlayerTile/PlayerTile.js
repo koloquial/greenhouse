@@ -19,9 +19,10 @@ const PlayerTile = ({ player, world, setView, setTile }) => {
                     {player.name}
                 </div>
 
-                <div className='Player-content'>
+                
                     <Navigation setActive={setActive} />
-
+                    
+                    <div className='general-bg'>
                     <Structures 
                         active={active} 
                         player={player} 

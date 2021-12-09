@@ -2,66 +2,24 @@
    M O U N T A I N
 *******************************************************/
 @import './palette.scss';
-
-.Mountain-heading{
-    background-color: $red;
-    color: $white;
-    font-size: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border: 0px;
-}
-
-.Mountain-content{
-    padding: 0px;
-    margin-top: 5px;
-    height: 301px;
-}
-
-.Mountain-resource{
-    background-color: $red_fade;
-    padding: 5px;
-    height: 80px;
-}
-
-.Mountain-resourceItem{
-    border: 1px dotted $red;
-    background-color: $red_fade;
-    cursor: pointer;
-    transition: 0.3s;
-    display: inline-block;
-    margin: 5px;
-    padding: 5px;
-}
-
-.Mountain-resourceItem:hover {
-    background-color: $white;
-    transition: 0.3s;
-}
-
-.Mountain-disabled{
-    display: inline-block;
-    background-color: $red_disabled;
-    vertical-align: top;
-    width: 19px;
-    height: 19px;
-    margin: 0;
-    padding: 3px;
-}
-
-.Mountain-icon{
-    display: inline;
-    color: $white;
-    font-size: small;
-}
+@import './mixins.scss';
 
 .Mountain{
-    display: inline-block;
-    background-color: $red_fade;
-    vertical-align: top;
-    cursor: pointer;
-    width: 19px;
-    height: 19px;
-    margin: 0;
-    padding: 3px;
+    @include proto();
+    background-color: $Mountain_fade;
+}
+.Mountain-heading{
+    @include heading($Mountain);
+}
+.Mountain-resource{
+    @include resource($Mountain_fade);
+}
+.Mountain-info{
+    @include info($Mountain, $Mountain_fade);
+}
+.Mountain-resourceItem{
+    @include resourceItem($Mountain, $Mountain_fade);
+}
+.Mountain-disabled{
+    @include disabledLand($Mountain_disabled);
 }

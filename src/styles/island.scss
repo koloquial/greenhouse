@@ -2,67 +2,24 @@
    I S L A N D
 *******************************************************/
 @import './palette.scss';
-
-.Island-heading{
-    background-color: $blue;
-    color: $white;
-    font-size: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border: 0px;
-}
-
-.Island-content{
-    padding: 0px;
-    margin-top: 5px;
-    height: 301px;
-}
-
-.Island-resource{
-    background-color: $blue_fade;
-    padding: 5px;
-    height: 80px;
-}
-
-.Island-resourceItem{
-    border: 1px dotted $blue;
-    background-color: $blue_fade;
-    margin: 5px;
-    padding: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.Island-resourceItem:hover {
-    background-color: $white;
-    transition: 0.3s;
-}
-  
-.Island-disabled{
-    display: inline-block;
-    background-color: $blue_disabled;
-    vertical-align: top;
-    width: 19px;
-    height: 19px;
-    margin: 0;
-    padding: 3px;
-}
-
-.Island-icon{
-    display: inline;
-    color: $white;
-    font-size: small;
-}
+@import './mixins.scss';
 
 .Island{
-    display: inline-block;
-    background-color: $blue_fade;
-    vertical-align: top;
-    cursor: pointer;
-    width: 19px;
-    height: 19px;
-    margin: 0;
-    padding: 3px;
+    @include proto();
+    background-color: $Island_fade;
 }
-
-  
+.Island-heading{
+    @include heading($Island);
+}
+.Island-resource{
+    @include resource($Island_fade);
+}
+.Island-info{
+    @include info($Island, $Island_fade);
+}
+.Island-resourceItem{
+    @include resourceItem($Island, $Island_fade);
+}
+.Island-disabled{
+    @include disabledLand($Island_disabled);
+}
