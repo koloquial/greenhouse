@@ -1,92 +1,60 @@
 import React, { useState, useEffect } from 'react';
-import Player from './classes/Player/Player';
-import World from './classes/World/World';
-import View from './components/View';
+
+//display components
+import GenerateWorld from './components/GenerateWorld';
+
+//tile components
+import PlayerTile from './components/PlayerTile';
+import WorldTile from './components/WorldTile/WorldTile';
+import SubGridTile from './components/SubGridTile/SubGridTile';
 
 const App = () => {
   const [world, setWorld] = useState();
-  const [view, setView] = useState();
+
   const [area, setArea] = useState();
-  const [tile, setTile] = useState();
+  
   const [player, setPlayer] = useState();
   const [forceUpdate, setForceUpdate] = useState(0)
 
-  useEffect(() => {
-    
-  })
+  //subgrid area to world map
+  const [view, setView] = useState();
 
-  const save = () => {
-    try{
-      localStorage.setItem('UC_Save:World', JSON.stringify(world));
-      console.log('Saved.')
-    }catch(e){
-      alert('Unable to save.')
-    }
-  }
-
-  const load = () => {
-    try{
-      let loadFile = localStorage.getItem('UC_Save:World');
-      console.log('Load:', JSON.parse(loadFile))
-    }catch(e){
-      alert('No save file found.')
-    }
-  }
-
-  const deleteSave = () => {
-    window.localStorage.clear();
-    console.log('Deleted local storage.')
-  }
+  //specific tile on subgrid
+  const [tile, setTile] = useState();
 
   return (
     <>
-      <h1>Untitled Community</h1>
-
-        {world === undefined ? 
-            <button onClick={() => {
-              setPlayer(new Player('Nick')); 
-              setWorld(new World())
-          }}>Start</button> : 
-          
-          <>
-            <button onClick={() => {save(); alert('Not yet implemented. Check console.');}}>Save</button>&nbsp;
-            <button onClick={() => {load(); alert('Not yet implemented. Check console.');}}>Load</button>&nbsp;
-            <button onClick={() => {deleteSave(); alert('Not yet implemented. Check console.');}}>Delete Save</button>
-            <br />
-          </>
-        }
-        {view ? 
+      <h3>Untitled Community</h3>
+      
+      <GenerateWorld world={world} setWorld={setWorld} setPlayer={setPlayer} />
+      
+        {/* {view ? 
           <View 
             subject={area} 
             data={view} 
             
             setTile={setTile} setView={setView} /> 
           : <></>
-        }
+        } */}
 
-        {tile ?  
-          <View 
-            subject={tile.subType} 
-            data={tile} 
-            
-            view={view} setView={setView} setArea={setArea}
-            setForceUpdate={setForceUpdate} forceUpdate={forceUpdate} 
-            setTile={setTile} world={world} /> 
-          : <></>
-        }
 
-          {world ? 
-            <View 
-              subject={'World'} 
-              data={world} 
-              
-              setView={setView} setView={setView} 
-              setArea={setArea} setTile={setTile}
-              setForceUpdate={setForceUpdate} forceUpdate={forceUpdate} /> 
-            : <></>
-          }
+          <SubGridTile 
+            view={view}
+            setTile={setTile}
+          />
 
-        {player ?  <View subject={player.type} data={player} /> : <></>}  
+          <WorldTile 
+            world={world}
+            setView={setView}
+            setTile={setTile}
+          />
+
+          <PlayerTile 
+            player={player} 
+            world={world}
+            setView={setView}
+            setTile={setTile}
+          /> 
     </>
   );
 }

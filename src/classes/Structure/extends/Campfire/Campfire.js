@@ -1,8 +1,8 @@
 import Structure from '../../Structure';
 
 class Campfire extends Structure{
-    constructor(parentType, location){
-        super(parentType, location);
+    constructor(parentType, location, worldLocation){
+        super(parentType, location, worldLocation);
         this.subType = 'Campfire';
         this.parentType = parentType;
         this.icon = <i class="fas fa-fire"></i>;

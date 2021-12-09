@@ -105,6 +105,8 @@ try{
 
                         data.parentType = world.grid[x][y].subType;
 
+                        data.worldLocation = [x, y];
+
                         console.log('data', data)
 
                         //discover world?
@@ -271,7 +273,7 @@ try{
                                                         }else{
                                                             setView(tile);
                                                             setArea(tile.subType)
-                                                            // setTile();
+                                                            setTile();
                                                         }
                                                     }}>
                                                         <center>
@@ -315,8 +317,6 @@ try{
                     }
 
                     {data.type === 'Resource' ? (<>
-                        {console.log('RESOURCE', data)}
-
                         <img 
                             src={data.getImage()} 
                             style={{width: '100%', opacity: .5, margin: '0'}} 
@@ -351,9 +351,6 @@ try{
                     </>) : (<></>)}
 
                     {data.type === 'Unit' ? (<>
-                        {console.log('Unit', data)}
-
-                        
 
                         <ReactCardFlip isFlipped={flip} flipDirection="horizontal">
         
@@ -491,27 +488,7 @@ try{
                  
                     </>) : (<></>)}
 
-                    {data.type === 'Player' ? (<>
-                        <table>
-                            <tr>
-                                <td>Gold: {data.gold}</td>
-                                <td>&nbsp;&nbsp;&nbsp;</td>
-                                <td>Wood: {data.wood}</td>
-                            </tr>
-                            <tr>
-                                <td>Iron: {data.iron}</td>
-                                <td>&nbsp;&nbsp;&nbsp;</td>
-                                <td>&nbsp;</td>
-                            </tr>
-                            <br />
-                            <br />
-                            <tr>
-                                <td>Food: {data.food}</td>
-                                <td>&nbsp;&nbsp;&nbsp;</td>
-                                <td>Shelter: {data.shelter}</td>
-                            </tr>
-                        </table>
-                    </>) : (<></>)}
+
 
                     {data.type === 'Structure' ? (<>
 

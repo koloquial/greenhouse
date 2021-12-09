@@ -2,8 +2,8 @@ import Unit from "../../Unit";
 import Image from './images/01.jpg';
 
 class Peasant extends Unit{
-    constructor(parentType, location){
-        super(parentType, location);
+    constructor(parentType, location, worldLocation){
+        super(parentType, location, worldLocation);
         this.subType = 'Peasant';
         this.icon = <i class="fas fa-male"></i>;
 
@@ -17,6 +17,9 @@ class Peasant extends Unit{
             mining: [0, 10],
             farming: [0, 10],
         }
+
+        this.food = 1;
+        this.shelter = 1;
 
         this.credit = 'Sasin Tipchai';
         this.getImage = this.getImage.bind(this);
