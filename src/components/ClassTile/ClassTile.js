@@ -1,8 +1,11 @@
-//tile types
+import React, { useState } from 'react';
 import Resource from './TileType/Resource';
 import Structure from './TileType/Structure';
+import Unit from './TileType/Unit';
+import CardFlip from './CardFlip';
 
 const ClassTile = ({ tile }) => {
+    
     if(tile === undefined){
         return <></>
 
@@ -18,16 +21,14 @@ const ClassTile = ({ tile }) => {
                 </div>
 
                 <div className='image-heading'>
-                    <img 
-                        src={tile.getImage()} 
-                        style={{width: '100%', opacity: .7, margin: '0'}} 
-                        title={`Image by ${tile.credit} at Pixabay`} 
-                    />
+                    <CardFlip tile={tile} />
                 </div>
                
                 <Resource tile={tile} />
 
                 <Structure tile={tile} />
+
+                <Unit tile={tile} />
                 
             </div>
         )

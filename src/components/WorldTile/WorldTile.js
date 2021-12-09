@@ -18,8 +18,10 @@ const WorldTile = ({ world, setView, setTile }) => {
                                             return (
                                                 <td>
                                                     <div className={tile.discovered ? tile.subType : `${tile.subType}-disabled`} onClick={() => {
-                                                        setView(tile);
-                                                        setTile();
+                                                        if(tile.discovered){
+                                                            setView(tile);
+                                                            setTile();
+                                                        }
                                                     }}>
                                                         &nbsp;
                                                     </div>  

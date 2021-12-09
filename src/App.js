@@ -11,45 +11,44 @@ import ClassTile from './components/ClassTile';
 
 const App = () => {
   const [world, setWorld] = useState();
-
-  const [area, setArea] = useState();
-  
   const [player, setPlayer] = useState();
-  const [forceUpdate, setForceUpdate] = useState(0)
-
-  //subgrid area to world map
   const [view, setView] = useState();
-
-  //specific tile on subgrid
   const [tile, setTile] = useState();
+
+  //chopping block
+  const [forceUpdate, setForceUpdate] = useState(0)
 
   return (
     <>
       <h3>Untitled Community</h3>
       
-      <GenerateWorld world={world} setWorld={setWorld} setPlayer={setPlayer} />
+      <GenerateWorld 
+        world={world} 
+        setWorld={setWorld} 
+        setPlayer={setPlayer} 
+      />
       
-        <ClassTile 
-          tile={tile}
-        />
+      <ClassTile 
+        tile={tile}
+      />
 
-          <SubGridTile 
-            view={view}
-            setTile={setTile}
-          />
+      <SubGridTile 
+        view={view}
+        setTile={setTile}
+      />
 
-          <WorldTile 
-            world={world}
-            setView={setView}
-            setTile={setTile}
-          />
+      <WorldTile 
+        world={world}
+        setView={setView}
+        setTile={setTile}
+      />
 
-          <PlayerTile 
-            player={player} 
-            world={world}
-            setView={setView}
-            setTile={setTile}
-          /> 
+      <PlayerTile 
+        player={player} 
+        world={world}
+        setView={setView}
+        setTile={setTile}
+      /> 
     </>
   );
 }

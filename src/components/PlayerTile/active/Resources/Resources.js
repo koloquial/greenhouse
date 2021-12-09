@@ -27,6 +27,8 @@ const Resources = ({ active, player }) => {
                             </div>
                         </center>
                     </td>
+                </tr>
+                <tr>
                     <td>
                         <center>
                             <div className='Player-resourceItem'>

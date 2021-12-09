@@ -24,6 +24,12 @@
     height: 80px;
 }
 
+.Plains-info{
+    background-color: $yellow_fade;
+    border: 1px dotted $yellow;
+    padding: 5px;
+}
+
 .Plains-resourceItem{
     border: 1px dotted $yellow;
     background-color: $yellow_fade;
