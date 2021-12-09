@@ -55,11 +55,36 @@ const App = () => {
             <br />
           </>
         }
-        {view ? <View subject={area} data={view} setTile={setTile} /> : <></>}
+        {view ? 
+          <View 
+            subject={area} 
+            data={view} 
+            
+            setTile={setTile} setView={setView} /> 
+          : <></>
+        }
 
-        {tile ?  <View subject={tile.subType} data={tile} view={view} setForceUpdate={setForceUpdate} forceUpdate={forceUpdate} setTile={setTile} world={world} /> : <></>}
+        {tile ?  
+          <View 
+            subject={tile.subType} 
+            data={tile} 
+            
+            view={view} setView={setView} setArea={setArea}
+            setForceUpdate={setForceUpdate} forceUpdate={forceUpdate} 
+            setTile={setTile} world={world} /> 
+          : <></>
+        }
 
-        {world ? <View subject={'World'} data={world} setView={setView} setArea={setArea} /> : <></>}
+          {world ? 
+            <View 
+              subject={'World'} 
+              data={world} 
+              
+              setView={setView} setView={setView} 
+              setArea={setArea} setTile={setTile}
+              setForceUpdate={setForceUpdate} forceUpdate={forceUpdate} /> 
+            : <></>
+          }
 
         {player ?  <View subject={player.type} data={player} /> : <></>}  
     </>

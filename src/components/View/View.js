@@ -44,10 +44,10 @@ const View = ({subject, data, setView, view, setArea, setTile, setForceUpdate, f
 
         switch(action){
         case 'North':
-                x = data.location[0] - 1;
-                y = data.location[1];
-            break;
-            case 'South':
+            x = data.location[0] - 1;
+            y = data.location[1];
+        break;
+        case 'South':
                 x = data.location[0] + 1;
                 y = data.location[1];
             break;
@@ -86,26 +86,36 @@ try{
         switch(action){
             case 'North':
                 try{
-                    console.log('world', world)
-                    console.log('view', view)
                     let x = view.location[0] - 1;
                     let y = view.location[1];
 
                     if(world.grid[x][y].grid[11][data.location[1]].subType === 'Clearing'){
                         console.log('move valid');
-                         //set view location to object
-            view.grid[x][y] = data;
 
-            //set clearing to old location
-            view.grid[oldX][oldY] = new Clearing(view.subType, [oldX, oldY])
+                        //put obj in new location
+                        world.grid[x][y].grid[11][data.location[1]] = data;
 
-            //set new location for object
-            data.location = [x, y];
+                        //set old location to clearing
+                        view.grid[oldX][oldY] = new Clearing(view.subType, [oldX, oldY])
 
-            data.steps = data.steps + 1;
+                        //change object location
+                        data.location = [11, data.location[1]];
 
-            //update
-            setForceUpdate(forceUpdate + 1);
+                        data.steps = data.steps + 1;
+
+                        data.parentType = world.grid[x][y].subType;
+
+                        console.log('data', data)
+
+                        //discover world?
+                        world.grid[x][y].discovered = true;
+
+                        setView(world.grid[x][y]);
+                        setArea(world.grid[x][y].subType)
+
+                        //update
+                        setForceUpdate(forceUpdate + 1);
+
                     }else{
                         console.log(`${world.grid[x][y].grid[11][data.location[1]].subType} blocks way.`)
                     }
@@ -113,6 +123,117 @@ try{
                     console.log('off world')
                 }
                 break;
+                case 'South':
+                    try{
+                        let x = view.location[0] + 1;
+                        let y = view.location[1];
+    
+                        if(world.grid[x][y].grid[0][data.location[1]].subType === 'Clearing'){
+                            console.log('move valid');
+    
+                            //put obj in new location
+                            world.grid[x][y].grid[0][data.location[1]] = data;
+    
+                            //set old location to clearing
+                            view.grid[oldX][oldY] = new Clearing(view.subType, [oldX, oldY])
+    
+                            //change object location
+                            data.location = [0, data.location[1]];
+    
+                            data.steps = data.steps + 1;
+    
+                            data.parentType = world.grid[x][y].subType;
+    
+                            //discover world?
+                            world.grid[x][y].discovered = true;
+    
+                            setView(world.grid[x][y]);
+                            setArea(world.grid[x][y].subType)
+    
+                            //update
+                            setForceUpdate(forceUpdate + 1);
+    
+                        }else{
+                            console.log(`${world.grid[x][y].grid[0][data.location[1]].subType} blocks way.`)
+                        }
+                    }catch(e){
+                        console.log('off world')
+                    }
+                    break;
+                    case 'East':
+                        try{
+                            let x = view.location[0];
+                            let y = view.location[1] + 1;
+        
+                            if(world.grid[x][y].grid[data.location[0]][0].subType === 'Clearing'){
+                                console.log('move valid');
+        
+                                //put obj in new location
+                                world.grid[x][y].grid[data.location[0]][0] = data;
+        
+                                //set old location to clearing
+                                view.grid[oldX][oldY] = new Clearing(view.subType, [oldX, oldY])
+        
+                                //change object location
+                                data.location = [data.location[0], 0];
+        
+                                data.steps = data.steps + 1;
+        
+                                data.parentType = world.grid[x][y].subType;
+        
+                                //discover world?
+                                world.grid[x][y].discovered = true;
+        
+                                setView(world.grid[x][y]);
+                                setArea(world.grid[x][y].subType)
+        
+                                //update
+                                setForceUpdate(forceUpdate + 1);
+        
+                            }else{
+                                console.log(`${world.grid[x][y].grid[data.location[0]][0].subType} blocks way.`)
+                            }
+                        }catch(e){
+                            console.log('off world')
+                        }
+                        break;
+                        case 'West':
+                        try{
+                            let x = view.location[0];
+                            let y = view.location[1] - 1;
+        
+                            if(world.grid[x][y].grid[data.location[0]][11].subType === 'Clearing'){
+                                console.log('move valid');
+        
+                                //put obj in new location
+                                world.grid[x][y].grid[data.location[0]][11] = data;
+        
+                                //set old location to clearing
+                                view.grid[oldX][oldY] = new Clearing(view.subType, [oldX, oldY])
+        
+                                //change object location
+                                data.location = [data.location[0], 11];
+        
+                                data.steps = data.steps + 1;
+        
+                                data.parentType = world.grid[x][y].subType;
+        
+                                //discover world?
+                                world.grid[x][y].discovered = true;
+        
+                                setView(world.grid[x][y]);
+                                setArea(world.grid[x][y].subType)
+        
+                                //update
+                                setForceUpdate(forceUpdate + 1);
+        
+                            }else{
+                                console.log(`${world.grid[x][y].grid[data.location[0]][11].subType} blocks way.`)
+                            }
+                        }catch(e){
+                            console.log('off world')
+                        }
+                        break;
             default: break;
         }
     }
@@ -146,9 +267,11 @@ try{
                                                         <div className={tile.parentType ? tile.parentType : tile.subType} onClick={() => {
                                                         if(tile.parentType){
                                                             setTile(tile);
+                                                            
                                                         }else{
                                                             setView(tile);
                                                             setArea(tile.subType)
+                                                            // setTile();
                                                         }
                                                     }}>
                                                         <center>
