@@ -2,10 +2,17 @@ import React, { useState, useEffect} from 'react';
 import Clearing from '../../../../classes/Resource/Clearing';
 import getNearby from '../Unit/Controller/functions/getNearby';
 
-const Resource = ({ tile, setTile, view, world, player, update, setUpdate }) =>{
+import Notification from '../../../Notification';
+import notify from '../../../Notification/functions/notify';
+
+const Resource = ({ tile, setTile, view, world, player, update, setUpdate, setDirection }) =>{
     const [nearby, setNearby] = useState();
     const [timer, setTimer] = useState();
     const [target, setTarget] = useState();
+
+    const [alertMessage, setAlertMessage] = useState('');
+    const [alertTime, setAlertTime] = useState(0);
+    const [alertType, setAlertType] = useState('');
 
     const isPeasantNearby = () => {
         for(let key in nearby){
@@ -16,20 +23,44 @@ const Resource = ({ tile, setTile, view, world, player, update, setUpdate }) =>{
         return false;
     }
 
-    const setPlayerReward = (reward) => {
+    const setPlayerReward = (reward, res) => {
+        console.log('REWARD:', reward)
+        console.log('RES', res)
+        
         const peasant = isPeasantNearby();
-        player[target] = player[target] + reward;
-        view.grid[tile.location[0]][tile.location[1]] = new Clearing(tile.parentType, [tile.location[0], tile.location[1]])
+        
+        console.log('---------------------')
+
+
+        player[res] = player[res] + reward;
+
+        console.log('TILE', tile)
+        console.log('VIEW', view)
+        // setAlertMessage(`+${reward} ${target}.`);
+        // setAlertType('success');
+        // setAlertTime(1.5 * 1000);
+        notify(`+${reward} ${res}.`, 'success', 1.5 * 1000)
+        let clearing = new Clearing(tile.parentType, [tile.location[0], tile.location[1]]);
+        view.grid[tile.location[0]][tile.location[1]] = clearing;
+        // world.grid[]
+        console.log('---------------------')
+        
         setTarget();
         setTimer();
         setNearby();
         peasant.status = 'idle';
-        setTile(peasant)
+        //if view === tile view then set tile, else dont set tile
+            // setTile(clearing);
+        
+
         setUpdate(update + 1);
     }
     
     useEffect(() => {
-        setNearby(getNearby(world, view, tile))
+        console.log('NEARBY THIS', tile)
+        let near = getNearby(world, view, tile);
+        console.log('NEAR', near)
+        setNearby(near)
 
     }, [tile])
 
@@ -44,6 +75,9 @@ const Resource = ({ tile, setTile, view, world, player, update, setUpdate }) =>{
 
     if(tile.type === 'Resource'){
         return (
+           
+            
+           
             <div className={`${tile.parentType}-resource`}>
                                 <div style={{float: 'right'}}>
                                     {isPeasantNearby() ? (
@@ -60,12 +94,22 @@ const Resource = ({ tile, setTile, view, world, player, update, setUpdate }) =>{
                                             (
                                                 <div className={`${tile.parentType}-resourceItem`} onClick={() => {
                                                     if(target !== key){
+                                                        console.log('KEY HERE', key);
                                                         setTarget(key);
-                                                        tile.execute(tile.actions[key], setPlayerReward, setTimer);
+                                                        
+                                                        let time = tile.execute(tile.actions[key], setPlayerReward, setTimer);
+                                                        
+                                                        // setAlertMessage(`${key}ing...`);
+                                                        // setAlertType('info');
+                                                        // setAlertTime(time * 1000);
+
+                                                        notify(`${tile.actions[key]}ing...`, 'info', time * 1000)
                                                         isPeasantNearby().timer = timer;
                                                         isPeasantNearby().status = tile.status;
+                                                    }else{
+                                                        console.log('TARGET === KEY')
                                                     }
-                                                   
+                                                    
                                                 }}>
                                                     {tile.status === 'idle' ? (
                                                         <>
@@ -126,7 +170,8 @@ const Resource = ({ tile, setTile, view, world, player, update, setUpdate }) =>{
                         })}
                     </tr>
                 </table>
-
+                
+                        <Notification />
             </div>    
         )
            

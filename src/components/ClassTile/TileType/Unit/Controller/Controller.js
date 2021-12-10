@@ -2,15 +2,29 @@ import React, { useState, useEffect } from 'react';
 import getAction from './functions/getAction.js';
 import getNearby from './functions/getNearby.js';
 
+import notify from '../../../../Notification/functions/notify.js';
+import Notification from '../../../../Notification/Notification.js';
+
 const Controller = ({ tile, setTile, world, view, setView, update, setUpdate }) => {
     const [nearby, setNearby] = useState({north: {}, south: {}, east: {}, west: {}});
+    const [alertMessage, setAlertMessage] = useState('');
+    const [alertTime, setAlertTime] = useState(1.5 * 1000);
 
     useEffect(() => {
         setNearby(getNearby(world, view, tile))
     }, [update])
 
+    useEffect(() => {
+        if(alertMessage !== ''){
+            notify(alertMessage, 'error', alertTime);
+            setTimeout(() => setAlertMessage(), alertTime)
+        }
+   
+    }, [alertMessage])
+
     return (
         <>
+        <Notification />
         {tile.status === 'idle' ? (<>
             <div style={{float: 'left', width: '100px'}}>
                 {console.log('STATUS', tile.status)}
@@ -19,7 +33,7 @@ const Controller = ({ tile, setTile, world, view, setView, update, setUpdate }) 
                         <td>&nbsp;</td>
                         <td>
                             <button className='controls' onClick={() => {
-                                let result = getAction('North', tile, world, view);
+                                let result = getAction('North', tile, world, view, setAlertMessage);
                                 if(result){
                                     setView(world.grid[result[0]][result[1]]);
                                 }
@@ -34,7 +48,7 @@ const Controller = ({ tile, setTile, world, view, setView, update, setUpdate }) 
                     <tr>
                         <td>
                         <button className='controls' onClick={() => {
-                            let result = getAction('West', tile, world, view);
+                            let result = getAction('West', tile, world, view, setAlertMessage);
                                 if(result){
                                     setView(world.grid[result[0]][result[1]]);
                                 }
@@ -46,7 +60,7 @@ const Controller = ({ tile, setTile, world, view, setView, update, setUpdate }) 
                         <td>&nbsp;</td>
                         <td>
                         <button className='controls' onClick={() => {
-                            let result = getAction('East', tile, world, view);
+                            let result = getAction('East', tile, world, view, setAlertMessage);
                                 if(result){
                                     setView(world.grid[result[0]][result[1]]);
                                 }
@@ -61,7 +75,7 @@ const Controller = ({ tile, setTile, world, view, setView, update, setUpdate }) 
                         <td>&nbsp;</td>
                         <td>
                         <button className='controls' onClick={() => {
-                            let result = getAction('South', tile, world, view);
+                            let result = getAction('South', tile, world, view, setAlertMessage);
                                 if(result){
                                     setView(world.grid[result[0]][result[1]]);
                                 }
@@ -81,7 +95,11 @@ const Controller = ({ tile, setTile, world, view, setView, update, setUpdate }) 
                     <td>&nbsp;</td>
                     <td>
                         {nearby.north !== undefined ? 
-                            (<button className='controls' onClick={() => setTile(nearby.north)}>{nearby.north.icon}</button>) 
+                            (<button className='controls' onClick={() => {
+                               
+                                setTile(nearby.north);
+
+                            }}>{nearby.north.icon}</button>) 
                             : (<button className='controls'>&nbsp;</button>)
                         }
                     </td>

@@ -1,6 +1,6 @@
 import Clearing from "../../../../../../classes/Resource/Clearing";
 
-const checkOutOfBounds = (action, tile, world, view) => {
+const checkOutOfBounds = (action, tile, world, view, setAlertMessage) => {
     let oldX = view.location[0];
     let oldY = view.location[1];
     let newX, newY, newSubX, newSubY;
@@ -60,7 +60,9 @@ const checkOutOfBounds = (action, tile, world, view) => {
     
         }else{
             //something in the way
-            console.log(`${world.grid[newX][newY].grid[newSubX][newSubY].subType} is in the way.`);
+            console.log(`${world.grid[newX][newY].grid[newSubX][newSubY].subType} is in the way.`)
+            console.log('getAction (alertMessage)', setAlertMessage)
+            setAlertMessage(`${world.grid[newX][newY].grid[newSubX][newSubY].subType} is in the way.`)
             return false;
         }
     }catch(e){
@@ -68,7 +70,7 @@ const checkOutOfBounds = (action, tile, world, view) => {
     }
 }
 
-const getAction = (action, tile, world, view) => {
+const getAction = (action, tile, world, view, setAlertMessage) => {
     let newX, newY;
     let oldX = tile.location[0];
     let oldY = tile.location[1];
@@ -109,6 +111,9 @@ const getAction = (action, tile, world, view) => {
         }else{
             //something in the way
             console.log(`${view.grid[newX][newY].subType} is in the way.`)
+            
+            console.log('getAction (alertMessage)', setAlertMessage)
+            setAlertMessage(`${view.grid[newX][newY].subType} is in the way.`)
             return false;
         }
     }catch(e){

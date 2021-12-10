@@ -13,7 +13,7 @@ class Resource{
     }
 
     countdown(){
-        if(this.timer > 0){
+        if(this.timer > 1){
             this.timer = this.timer - 1;
             console.log('countdown:', this.timer)
             this.timerCallback(this.timer);
@@ -21,13 +21,16 @@ class Resource{
         }else{
             if(this.status !== 'idle'){
                 let reward;
+                let res;
                 for(let key in this.actions){
                     if(this.actions[key] === this.status){
                         reward = this.resource[key];
+                        res = key;
                         this.resource[key] = 0;
+                        
                     }
                 }
-                this.rewardCallback(reward);
+                this.rewardCallback(reward, res);
             }
         }
     }
@@ -36,13 +39,15 @@ class Resource{
         switch(action){
             case 'Fell':
                 this.status = 'Fell';
-                this.timer = 10;
+                this.timer = 11;
                 this.rewardCallback = rewardCallback;
                 this.timerCallback = timerCallback;
+                
                 break;
             default: break;
         }
         this.countdown();
+        return this.timer;
     }
 }
 

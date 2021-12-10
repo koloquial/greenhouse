@@ -26,6 +26,11 @@ const App = () => {
         setPlayer={setPlayer} 
       />
       
+      <SubGridTile 
+        view={view}
+        setTile={setTile}
+      />
+      
       <ClassTile 
         tile={tile}
         setTile={setTile}
@@ -37,10 +42,7 @@ const App = () => {
         player={player}
       />
 
-      <SubGridTile 
-        view={view}
-        setTile={setTile}
-      />
+
 
       <WorldTile 
         world={world}

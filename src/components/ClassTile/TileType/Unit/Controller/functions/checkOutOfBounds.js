@@ -2,12 +2,12 @@ const checkOutOfBounds = (direction, world, view, tile) => {
     switch(direction){
         case 'North':
             try{
-                console.log('return', world.grid[view.location[0] - 1][view.location[1]].grid[11][tile.location[1]])
+                console.log('CHECK OOB: LOCATION NORTH', world.grid[view.location[0] - 1][view.location[1]].grid[11][tile.location[1]])
                 return world.grid[view.location[0] - 1][view.location[1]].grid[11][tile.location[1]]
             }catch(e){ return {}}
         case 'South':
             try{
-                console.log('return', world.grid[view.location[0] + 1][view.location[1]].grid[0][tile.location[1]])
+                console.log('CHECK OOB: LOCATION SOUTH' , world.grid[view.location[0] + 1][view.location[1]].grid[0][tile.location[1]])
                 return world.grid[view.location[0] + 1][view.location[1]].grid[0][tile.location[1]]
             }catch(e){ return {}}
         case 'East':
