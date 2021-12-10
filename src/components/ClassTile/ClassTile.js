@@ -4,7 +4,7 @@ import Structure from './TileType/Structure';
 import Unit from './TileType/Unit';
 import CardFlip from './CardFlip';
 
-const ClassTile = ({ tile }) => {
+const ClassTile = ({ tile, world, view, setView, update, setUpdate }) => {
     
     if(tile === undefined){
         return <></>
@@ -28,7 +28,14 @@ const ClassTile = ({ tile }) => {
 
                 <Structure tile={tile} />
 
-                <Unit tile={tile} />
+                <Unit 
+                    tile={tile} 
+                    world={world} 
+                    view={view}
+                    setView={setView} 
+                    update={update} 
+                    setUpdate={setUpdate} 
+                />
                 
             </div>
         )

@@ -14,9 +14,7 @@ const App = () => {
   const [player, setPlayer] = useState();
   const [view, setView] = useState();
   const [tile, setTile] = useState();
-
-  //chopping block
-  const [forceUpdate, setForceUpdate] = useState(0)
+  const [update, setUpdate] = useState(0)
 
   return (
     <>
@@ -30,6 +28,11 @@ const App = () => {
       
       <ClassTile 
         tile={tile}
+        world={world}
+        view={view}
+        setView={setView}
+        update={update}
+        setUpdate={setUpdate}
       />
 
       <SubGridTile 
