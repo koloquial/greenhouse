@@ -6,7 +6,8 @@ class Peasant extends Unit{
         super(parentType, location, worldLocation);
         this.subType = 'Peasant';
         this.icon = <i class="fas fa-male"></i>;
-
+        this.status = 'idle';
+        this.timer = 0;
         this.health = [25, 25];
         this.attack = 3;
         this.speed = 3;

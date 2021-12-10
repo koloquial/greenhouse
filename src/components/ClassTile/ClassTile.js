@@ -26,6 +26,7 @@ const ClassTile = ({ tile, setTile, world, view, setView, update, setUpdate, pla
                
                 <Resource 
                     tile={tile}
+                    setTile={setTile}
                     view={view}
                     world={world}
                     player={player}

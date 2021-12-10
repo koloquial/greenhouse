@@ -5,15 +5,15 @@ import getNearby from './functions/getNearby.js';
 const Controller = ({ tile, setTile, world, view, setView, update, setUpdate }) => {
     const [nearby, setNearby] = useState({north: {}, south: {}, east: {}, west: {}});
 
-    
-
     useEffect(() => {
         setNearby(getNearby(world, view, tile))
     }, [update])
 
     return (
         <>
+        {tile.status === 'idle' ? (<>
             <div style={{float: 'left', width: '100px'}}>
+                {console.log('STATUS', tile.status)}
                 <table>
                     <tr>
                         <td>&nbsp;</td>
@@ -113,7 +113,7 @@ const Controller = ({ tile, setTile, world, view, setView, update, setUpdate }) 
                     <td>&nbsp;</td>
                 </tr>
             </table>
-        </div>
+        </div></>) : (<>{tile.status}ing... {tile.timer}</>)}
     </>
     )
 }
