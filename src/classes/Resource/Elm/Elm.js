@@ -2,10 +2,11 @@ import Resource from '../../Resource';
 import Image from './images/01.jpg';
 
 class Elm extends Resource{
-    constructor(parentType, location){
+    constructor(parentType, location, parentID){
         super(parentType, location);
         this.subType = 'Elm';
         this.icon = <i class="fas fa-tree"></i>;
+        this.id = `${parentID}`
         this.resource = {
             wood: Math.floor(Math.random() * 100) + 10
         }

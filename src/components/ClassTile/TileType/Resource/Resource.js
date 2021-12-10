@@ -24,35 +24,18 @@ const Resource = ({ tile, setTile, view, world, player, update, setUpdate, setDi
     }
 
     const setPlayerReward = (reward, res) => {
-        console.log('REWARD:', reward)
-        console.log('RES', res)
-        
-        const peasant = isPeasantNearby();
-        
-        console.log('---------------------')
 
+        const peasant = isPeasantNearby();
+        peasant.status = 'idle';
 
         player[res] = player[res] + reward;
+        notify(`+${reward} ${res}.`, 'success', 1.5 * 1000);
 
-        console.log('TILE', tile)
-        console.log('VIEW', view)
-        // setAlertMessage(`+${reward} ${target}.`);
-        // setAlertType('success');
-        // setAlertTime(1.5 * 1000);
-        notify(`+${reward} ${res}.`, 'success', 1.5 * 1000)
         let clearing = new Clearing(tile.parentType, [tile.location[0], tile.location[1]]);
         view.grid[tile.location[0]][tile.location[1]] = clearing;
-        // world.grid[]
-        console.log('---------------------')
-        
         setTarget();
         setTimer();
-        setNearby();
-        peasant.status = 'idle';
-        //if view === tile view then set tile, else dont set tile
-            // setTile(clearing);
-        
-
+        // setNearby();
         setUpdate(update + 1);
     }
     
@@ -91,78 +74,40 @@ const Resource = ({ tile, setTile, view, world, player, update, setUpdate, setDi
                                 <td>
                                     <center>
                                         {isPeasantNearby() ? 
-                                            (
-                                                <div className={`${tile.parentType}-resourceItem`} onClick={() => {
-                                                    if(target !== key){
-                                                        console.log('KEY HERE', key);
-                                                        setTarget(key);
-                                                        
-                                                        let time = tile.execute(tile.actions[key], setPlayerReward, setTimer);
-                                                        
-                                                        // setAlertMessage(`${key}ing...`);
-                                                        // setAlertType('info');
-                                                        // setAlertTime(time * 1000);
-
-                                                        notify(`${tile.actions[key]}ing...`, 'info', time * 1000)
-                                                        isPeasantNearby().timer = timer;
-                                                        isPeasantNearby().status = tile.status;
-                                                    }else{
-                                                        console.log('TARGET === KEY')
+                                            <>
+                                                {/*peasant nearby, idle*/}
+                                                {tile.status === 'idle' ? 
+                                                    <div className={`${tile.parentType}-resourceItem`} onClick={() => {
+                                                            if(tile.status === 'idle'){
+                                                                setTarget(key);
+                                                                let time = tile.execute(tile.actions[key], setPlayerReward, setTimer);
+                                                                notify(`${tile.actions[key]}ing...`, 'info', time * 1000)
+                                                                isPeasantNearby().timer = timer;
+                                                                isPeasantNearby().status = tile.status;
+                                                            }
+                                                        }}>
+                                                            <h4>{key[0].toUpperCase() + key.slice(1)}</h4>
+                                                            <br /><p>{tile.resource[key]}</p>
+                                                    </div>
+                                                : <>
+                                                    {/*peasant nearby, not idle*/}
+                                                    {timer !== undefined ?
+                                                        <>
+                                                            <h4>{tile.actions[key]}ing...</h4>
+                                                            <br /><p>{timer}</p>
+                                                        </> : <></>
                                                     }
-                                                    
-                                                }}>
-                                                    {tile.status === 'idle' ? (
-                                                        <>
-                                                            <h4>
-                                                                {key[0].toUpperCase() + key.slice(1)}
-                                                            </h4>
-                                                            <br />
-                                                            <p>
-                                                                {tile.resource[key]}
-                                                            </p>
-                                                        </>
-                                                    ) : (
-                                                        <>
-                                                        <h4>
-                                                        {tile.status}ing...
-                                                    </h4>
-                                                    <br />
-                                                    <p>
-                                                        {timer}s
-                                                    </p>
-                                                    </>
-                                                    )}
-                                                    
-                                                </div>
-                                            ) 
-                                            
-                                            : 
-                                            
-                                            (
-                                                <div className={`${tile.subType}-disabled`} >
-                                                    {tile.status === 'idle' ? (
-                                                        <>
-                                                            <h4>
-                                                                {key[0].toUpperCase() + key.slice(1)}
-                                                            </h4>
-                                                            <br />
-                                                            <p>
-                                                                {tile.resource[key]}
-                                                            </p>
-                                                        </>
-                                                    ) : (
-                                                        <>
-                                                        <h4>
-                                                        {tile.status}ing...
-                                                    </h4>
-                                                    <br />
-                                                    <p>
-                                                        {timer}s
-                                                    </p>
-                                                    </>
-                                                    )}
-                                                </div>
-                                            )
+                                                   
+                                                </>   
+                                                }
+                                            </>
+                                            : <>
+                                                {/*peasant not near*/}
+                                                {tile.status === 'idle' ?
+                                                    <>{/*peasant not near, idle*/}</> 
+                                                    : <>{/*peasant not near, not idle*/}</>
+                                                }
+                                            </>  
                                         }
                                     </center>
                                 </td>

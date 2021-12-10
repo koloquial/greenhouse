@@ -7,6 +7,7 @@ class Resource{
         this.timer = null;
         this.rewardCallback = null;
         this.timerCallback = null;
+        
 
         this.execute = this.execute.bind(this);
         this.countdown = this.countdown.bind(this);

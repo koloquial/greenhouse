@@ -1,7 +1,7 @@
 import Clearing from "../../Resource/Clearing";
 import createClass from "../../../functions/createClass";
 
-const fillGrid = (size, subType) =>{
+const fillGrid = (size, subType, id) =>{
     let array = [];
     for(let i = 0; i < size; i++){
         let row = [];
@@ -11,7 +11,7 @@ const fillGrid = (size, subType) =>{
                 row.push(new Clearing(subType, [i, j]));
             }else{
                 //push resource
-                row.push(createClass(subType, [i, j]));
+                row.push(createClass(subType, [i, j], id));
             }
         }
         array.push(row);

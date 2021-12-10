@@ -42,8 +42,6 @@ const App = () => {
         player={player}
       />
 
-
-
       <WorldTile 
         world={world}
         setView={setView}

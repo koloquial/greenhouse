@@ -6,7 +6,8 @@ class Forest extends Land{
         super(location);
         this.subType = 'Forest';
         this.size = 12;
-        this.grid = fillGrid(this.size, this.subType);
+        this.id = `${this.subType}-${Math.floor(Math.random() * 1000000)}`;
+        this.grid = fillGrid(this.size, this.subType, this.id);
 
     }
 }
