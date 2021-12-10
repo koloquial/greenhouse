@@ -10,20 +10,12 @@ const Controller = ({ tile, world, view, setView, update, setUpdate }) => {
                     <td>
                         <button className='controls' onClick={() => {
                             let result = getAction('North', tile, world, view);
-                            console.log('RESULT', result);
-                            try{
-                                if(result){
-                                    console.log('SET VIEW CALLED')
-                                    console.log(setView)
-                                    setView(world.grid[result[0]][result[1]]);
-                                }
-                            }catch(e){
-                                console.log('CATCH')
+                            if(result){
+                                setView(world.grid[result[0]][result[1]]);
                             }
-                            console.log('update called')
                             setUpdate(update + 1);
                         }}>
-                                <i class="fas fa-caret-up fa-lg"></i>
+                            <i class="fas fa-caret-up fa-lg"></i>
                         </button>
                     </td>
                     <td>&nbsp;</td>
@@ -31,13 +23,25 @@ const Controller = ({ tile, world, view, setView, update, setUpdate }) => {
 
                 <tr>
                     <td>
-                        <button onClick={() => getAction('West', tile, world, view)} className='controls'>
+                    <button className='controls' onClick={() => {
+                        let result = getAction('West', tile, world, view);
+                            if(result){
+                                setView(world.grid[result[0]][result[1]]);
+                            }
+                            setUpdate(update + 1);
+                        }}>
                             <i class="fas fa-caret-left fa-lg"></i>
                         </button>
                     </td>
                     <td>&nbsp;</td>
                     <td>
-                        <button onClick={() => getAction('East', tile, world, view)} className='controls'>
+                    <button className='controls' onClick={() => {
+                        let result = getAction('East', tile, world, view);
+                            if(result){
+                                setView(world.grid[result[0]][result[1]]);
+                            }
+                            setUpdate(update + 1);
+                        }}>
                             <i class="fas fa-caret-right fa-lg"></i>
                         </button>
                     </td>
@@ -46,7 +50,13 @@ const Controller = ({ tile, world, view, setView, update, setUpdate }) => {
                 <tr>
                     <td>&nbsp;</td>
                     <td>
-                        <button onClick={() => getAction('South', tile, world, view)} className='controls'>
+                    <button className='controls' onClick={() => {
+                        let result = getAction('South', tile, world, view);
+                            if(result){
+                                setView(world.grid[result[0]][result[1]]);
+                            }
+                            setUpdate(update + 1);
+                        }}>
                             <i class="fas fa-caret-down fa-lg"></i>
                         </button>
                     </td>
