@@ -6,12 +6,14 @@
     padding-left: 5px;
     padding-right: 5px;
     border: 0px;
+    transition: 0.3s;
 }
 
 @mixin resource($land){
     background-color: $land;
     padding: 5px;
     height: 80px;
+    transition: 0.3s;
 }
 
 @mixin info($land, $land_fade){
@@ -19,6 +21,7 @@
     border: 1px dotted $land;
     padding: 5px;
     height: 194px;
+    transition: 0.3s;
 }
 
 @mixin resourceItem($land, $land_fade){
@@ -43,6 +46,7 @@
     height: 19px;
     margin: 0;
     padding: 3px;
+    transition: 0.3s;
 }
 
 @mixin proto{
@@ -53,4 +57,5 @@
     height: 19px;
     margin: 0;
     padding: 3px;
+    transition: 0.3s;
 }
