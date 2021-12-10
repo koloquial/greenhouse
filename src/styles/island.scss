@@ -18,7 +18,7 @@
     @include info($Island, $Island_fade);
 }
 .Island-resourceItem{
-    @include resourceItem($Island, $Island_fade);
+    @include resourceItem($Island, $Island_fade, $Island_disabled);
 }
 .Island-disabled{
     @include disabledLand($Island_disabled);

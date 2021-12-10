@@ -8,5 +8,5 @@
     @include heading($general)
  }
  .Player-resourceItem{
-    @include resourceItem($general, $general_fade)
+    @include resourceItem($general, $general_fade, $general_disabled)
  }

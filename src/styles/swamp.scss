@@ -18,7 +18,7 @@
     @include info($Swamp, $Swamp_fade);
 }
 .Swamp-resourceItem{
-    @include resourceItem($Swamp, $Swamp_fade);
+    @include resourceItem($Swamp, $Swamp_fade, $Swamp_disabled);
 }
 .Swamp-disabled{
     @include disabledLand($Swamp_disabled);

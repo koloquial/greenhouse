@@ -18,7 +18,7 @@
     @include info($Mountain, $Mountain_fade);
 }
 .Mountain-resourceItem{
-    @include resourceItem($Mountain, $Mountain_fade);
+    @include resourceItem($Mountain, $Mountain_fade, $Mountain_disabled);
 }
 .Mountain-disabled{
     @include disabledLand($Mountain_disabled);

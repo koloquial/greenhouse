@@ -7,7 +7,7 @@ const Resource = ({ tile, view, world }) =>{
     const isPeasantNearby = () => {
         for(let key in nearby){
             if(nearby[key].subType === 'Peasant'){
-                return true
+                return nearby[key];
             }
         }
         return false;
@@ -16,6 +16,7 @@ const Resource = ({ tile, view, world }) =>{
     useEffect(() => {
         setNearby(getNearby(world, view, tile))
     }, [tile])
+
 
     if(tile.type === 'Resource'){
         return (
@@ -26,22 +27,36 @@ const Resource = ({ tile, view, world }) =>{
                             return (
                                 <td>
                                     <center>
-                                        <div className={`${tile.parentType}-resourceItem`} onClick={() => {
-                                            if(isPeasantNearby()){
-                                                console.log('peasant near')
-                                                
-                                            }else{
-                                                console.log('peasnt not near')
-                                            }
-                                        }}>
-                                            <h4>
-                                                {key[0].toUpperCase() + key.slice(1)}
-                                            </h4>
-                                            <br />
-                                            <p>
-                                                {tile.resource[key]}
-                                            </p>
-                                        </div>
+                                        {isPeasantNearby() ? 
+                                            (
+                                                <div className={`${tile.parentType}-resourceItem`} onClick={() => {
+                                                    
+                                                    tile.execute(tile.actions[key], isPeasantNearby(), () => {console.log('CALLBACK')});
+                                                }}>
+                                                    <h4>
+                                                        {key[0].toUpperCase() + key.slice(1)}
+                                                    </h4>
+                                                    <br />
+                                                    <p>
+                                                        {tile.resource[key]}
+                                                    </p>
+                                                </div>
+                                            ) 
+                                            
+                                            : 
+                                            
+                                            (
+                                                <div className={`${tile.subType}-disabled`} >
+                                                    <h4>
+                                                        {key[0].toUpperCase() + key.slice(1)}
+                                                    </h4>
+                                                    <br />
+                                                    <p>
+                                                        {tile.resource[key]}
+                                                    </p>
+                                                </div>
+                                            )
+                                        }
                                     </center>
                                 </td>
                             )
