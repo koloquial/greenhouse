@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import getAction from './functions/getAction.js';
 
-const Controller = ({ tile, world, view, setView, update, setUpdate }) => {
+const Controller = ({ tile, setTile, world, view, setView, update, setUpdate }) => {
     const [nearby, setNearby] = useState({north: {}, south: {}, east: {}, west: {}});
 
     const checkOutOfBounds = (direction) => {
@@ -143,7 +143,7 @@ const Controller = ({ tile, world, view, setView, update, setUpdate }) => {
                     <td>&nbsp;</td>
                     <td>
                         {nearby.north !== undefined ? 
-                            (<button className='controls'>{nearby.north.icon}</button>) 
+                            (<button className='controls' onClick={() => setTile(nearby.north)}>{nearby.north.icon}</button>) 
                             : (<button className='controls'>&nbsp;</button>)
                         }
                     </td>
@@ -152,14 +152,14 @@ const Controller = ({ tile, world, view, setView, update, setUpdate }) => {
                 <tr>
                     <td>
                         {nearby.west !== undefined ? 
-                            (<button className='controls'>{nearby.west.icon}</button>) 
+                            (<button className='controls' onClick={() => setTile(nearby.west)}>{nearby.west.icon}</button>) 
                             : (<button className='controls'>&nbsp;</button>)
                         }
                     </td>
                     <td>&nbsp;</td>
                     <td>
                         {nearby.east !== undefined ? 
-                            (<button className='controls'>{nearby.east.icon}</button>) 
+                            (<button className='controls' onClick={() => setTile(nearby.east)}>{nearby.east.icon}</button>) 
                             : (<button className='controls'>&nbsp;</button>)
                         }
                     </td>
@@ -168,7 +168,7 @@ const Controller = ({ tile, world, view, setView, update, setUpdate }) => {
                     <td>&nbsp;</td>
                     <td>
                         {nearby.south !== undefined ? 
-                            (<button className='controls'>{nearby.south.icon}</button>) 
+                            (<button className='controls' onClick={() => setTile(nearby.south)}>{nearby.south.icon}</button>) 
                             : (<button className='controls'>&nbsp;</button>)
                         }
                     </td>

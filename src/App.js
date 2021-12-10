@@ -28,6 +28,7 @@ const App = () => {
       
       <ClassTile 
         tile={tile}
+        setTile={setTile}
         world={world}
         view={view}
         setView={setView}
