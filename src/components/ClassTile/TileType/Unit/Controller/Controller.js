@@ -1,76 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import getAction from './functions/getAction.js';
+import getNearby from './functions/getNearby.js';
 
 const Controller = ({ tile, setTile, world, view, setView, update, setUpdate }) => {
     const [nearby, setNearby] = useState({north: {}, south: {}, east: {}, west: {}});
 
-    const checkOutOfBounds = (direction) => {
-        switch(direction){
-            case 'North':
-                try{
-                    console.log('return', world.grid[view.location[0] - 1][view.location[1]].grid[11][tile.location[1]])
-                    return world.grid[view.location[0] - 1][view.location[1]].grid[11][tile.location[1]]
-                }catch(e){ return {}}
-            case 'South':
-                try{
-                    console.log('return', world.grid[view.location[0] + 1][view.location[1]].grid[0][tile.location[1]])
-                    return world.grid[view.location[0] + 1][view.location[1]].grid[0][tile.location[1]]
-                }catch(e){ return {}}
-            case 'East':
-                try{
-                    console.log('return', world.grid[view.location[0]][view.location[1] + 1].grid[tile.location[0]][0])
-                    return world.grid[view.location[0]][view.location[1] + 1].grid[tile.location[0]][0]
-                }catch(e){ return {}}
-            case 'West':
-                try{
-                    console.log('return', world.grid[view.location[0]][view.location[1] - 1].grid[tile.location[0]][11])
-                    return world.grid[view.location[0]][view.location[1] - 1].grid[tile.location[0]][11]
-                }catch(e){ return {}}
-            default: return {}
-        }
-        
-    }
+    
 
     useEffect(() => {
-        let north, south, east, west;
-
-        try{
-            north = view.grid[tile.location[0] - 1][tile.location[1]];
-            if(north === undefined){
-                north = checkOutOfBounds('North');
-            }
-        }catch(e){
-            north = checkOutOfBounds('North');
-        }
-
-        try{
-            south = view.grid[tile.location[0] + 1][tile.location[1]];
-            if(south === undefined){
-                south = checkOutOfBounds('South');
-            }
-        }catch(e){
-            south = checkOutOfBounds('South');
-        }
-
-        try{
-            east = view.grid[tile.location[0]][tile.location[1] + 1];
-            if(east === undefined){
-                east = checkOutOfBounds('East');
-            }
-        }catch(e){
-            east = checkOutOfBounds('East');
-        }
-
-        try{
-            west = view.grid[tile.location[0]][tile.location[1] - 1];
-            if(west === undefined){
-                west = checkOutOfBounds('West');
-            }
-        }catch(e){
-            west = checkOutOfBounds('West');
-        }
-            
-        setNearby({north, south, east, west})
+        setNearby(getNearby(world, view, tile))
     }, [update])
 
     return (

@@ -24,7 +24,11 @@ const ClassTile = ({ tile, setTile, world, view, setView, update, setUpdate }) =
                     <CardFlip tile={tile} />
                 </div>
                
-                <Resource tile={tile} />
+                <Resource 
+                    tile={tile}
+                    view={view}
+                    world={world}
+                />
 
                 <Structure tile={tile} />
 
