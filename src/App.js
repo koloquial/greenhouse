@@ -34,6 +34,7 @@ const App = () => {
         setView={setView}
         update={update}
         setUpdate={setUpdate}
+        player={player}
       />
 
       <SubGridTile 

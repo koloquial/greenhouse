@@ -5,17 +5,18 @@ class Resource{
         this.location = location;
         this.status = 'idle';
         this.timer = null;
-        this.peasant = null;
-        this.callback = null;
+        this.rewardCallback = null;
+        this.timerCallback = null;
 
         this.execute = this.execute.bind(this);
         this.countdown = this.countdown.bind(this);
     }
 
     countdown(){
-        console.log('timer', this.timer)
         if(this.timer > 0){
             this.timer = this.timer - 1;
+            console.log('countdown:', this.timer)
+            this.timerCallback(this.timer);
             setTimeout(() => this.countdown(), 1000)
         }else{
             if(this.status !== 'idle'){
@@ -26,18 +27,18 @@ class Resource{
                         this.resource[key] = 0;
                     }
                 }
-                this.callback(reward);
+                this.rewardCallback(reward);
             }
         }
     }
 
-    execute(action, peasant, callback){
+    execute(action, rewardCallback, timerCallback){
         switch(action){
             case 'Fell':
                 this.status = 'Fell';
                 this.timer = 10;
-                this.peasant = peasant;
-                this.callback = () => callback;
+                this.rewardCallback = rewardCallback;
+                this.timerCallback = timerCallback;
                 break;
             default: break;
         }

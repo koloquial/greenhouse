@@ -1,8 +1,10 @@
 import React, { useState, useEffect} from 'react';
 import getNearby from '../Unit/Controller/functions/getNearby';
 
-const Resource = ({ tile, view, world }) =>{
+const Resource = ({ tile, view, world, player, update, setUpdate }) =>{
     const [nearby, setNearby] = useState();
+    const [timer, setTimer] = useState();
+    const [target, setTarget] = useState();
 
     const isPeasantNearby = () => {
         for(let key in nearby){
@@ -12,10 +14,19 @@ const Resource = ({ tile, view, world }) =>{
         }
         return false;
     }
+
+    const setPlayerReward = (reward) => {
+        player[target] = player[target] + reward;
+        setUpdate(update + 1);
+    }
     
     useEffect(() => {
         setNearby(getNearby(world, view, tile))
     }, [tile])
+
+    useEffect(() => {
+        console.log('timer', timer)
+    }, [timer])
 
 
     if(tile.type === 'Resource'){
@@ -30,8 +41,8 @@ const Resource = ({ tile, view, world }) =>{
                                         {isPeasantNearby() ? 
                                             (
                                                 <div className={`${tile.parentType}-resourceItem`} onClick={() => {
-                                                    
-                                                    tile.execute(tile.actions[key], isPeasantNearby(), () => {console.log('CALLBACK')});
+                                                    setTarget(key);
+                                                    tile.execute(tile.actions[key], setPlayerReward, setTimer);
                                                 }}>
                                                     <h4>
                                                         {key[0].toUpperCase() + key.slice(1)}
