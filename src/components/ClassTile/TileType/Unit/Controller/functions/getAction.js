@@ -49,9 +49,9 @@ const checkOutOfBounds = (action, tile, world, view) => {
     
             //update tile location
             tile.location = [newSubX, newSubY];
-    
+
             //update world location
-            tile.worldLocation = [tile.worldLocation[0] - 1, tile.worldLocation[1]]
+            tile.worldLocation = [newX, newY]
     
             //add steps
             tile.steps = tile.steps + 1;
