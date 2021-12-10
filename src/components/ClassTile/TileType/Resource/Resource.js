@@ -1,4 +1,5 @@
 import React, { useState, useEffect} from 'react';
+import Clearing from '../../../../classes/Resource/Clearing';
 import getNearby from '../Unit/Controller/functions/getNearby';
 
 const Resource = ({ tile, view, world, player, update, setUpdate }) =>{
@@ -17,6 +18,7 @@ const Resource = ({ tile, view, world, player, update, setUpdate }) =>{
 
     const setPlayerReward = (reward) => {
         player[target] = player[target] + reward;
+        view.grid[tile.location[0]][tile.location[1]] = new Clearing(tile.parentType, [tile.location[0], tile.location[1]])
         setUpdate(update + 1);
     }
     
