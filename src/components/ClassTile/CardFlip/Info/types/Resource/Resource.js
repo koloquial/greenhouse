@@ -15,40 +15,39 @@ const Resource = ({ tile, setFlip, world, view }) => {
             <div style={{float: 'left', display: 'inline-block'}}>
                 <h2>{tile.subType}</h2>
             </div>
-
             <br /><br />
-            <hr />
+
 
         {tile.subType === 'Clearing' ? <>
-            {menu === 'default' ? 
-                    <>
-                        {Object.keys(tile.options).map(option => {
-                            return (
-                                <button onClick={() => {
-                                    setMenu('subMenu');
-                                    setSubMenu(option)
-                                }}>{option}</button>
-                            )
-                        })}
-                    </> : <></>}
+        <div className='tab'>
+            {Object.keys(tile.options).map(option => {
+                return (
+                    <button onClick={() => {
+                        setMenu('subMenu');
+                        setSubMenu(option)
+                    }}>{option[0].toUpperCase() + option.slice(1)}</button>
+                )
+            })}
 
-            {menu === 'subMenu' ? 
-                <table>
-                    <tr>
-                        <td>
-                            <center>
-                                {Object.keys(tile.options[subMenu]).map(option => {
-                                    return (
-                                        <div className={`${tile.parentType}-resourceItem`} onClick={() => console.log('build', option)}>
-                                            {tile.options[subMenu][option]}
-                                        </div>
-                                    )
-                                })}
-                            </center>
-                        </td>
-                    </tr>
-                </table> : <></>}
-            </> : <></>}
+        </div>
+
+        {menu === 'subMenu' ? 
+            <table>
+                <tr>
+                    <td>
+                        <center>
+                            {Object.keys(tile.options[subMenu]).map(option => {
+                                return (
+                                    <div className={`${tile.parentType}-resourceItem`} onClick={() => console.log('build', option)}>
+                                        {tile.options[subMenu][option]}
+                                    </div>
+                                )
+                            })}
+                        </center>
+                    </td>
+                </tr>
+            </table> : <></>}
+        </> : <></>}
             
         </div>
     )
