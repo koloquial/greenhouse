@@ -19,17 +19,18 @@ const Resource = ({ tile, setFlip, world, view }) => {
             <br /><br />
             <hr />
 
+        {tile.subType === 'Clearing' ? <>
             {menu === 'default' ? 
-                <>
-                    {Object.keys(tile.options).map(option => {
-                        return (
-                            <button onClick={() => {
-                                setMenu('subMenu');
-                                setSubMenu(option)
-                            }}>{option}</button>
-                        )
-                    })}
-                </> : <></>}
+                    <>
+                        {Object.keys(tile.options).map(option => {
+                            return (
+                                <button onClick={() => {
+                                    setMenu('subMenu');
+                                    setSubMenu(option)
+                                }}>{option}</button>
+                            )
+                        })}
+                    </> : <></>}
 
             {menu === 'subMenu' ? 
                 <table>
@@ -47,6 +48,8 @@ const Resource = ({ tile, setFlip, world, view }) => {
                         </td>
                     </tr>
                 </table> : <></>}
+            </> : <></>}
+            
         </div>
     )
 
