@@ -21,7 +21,7 @@ const ClassTile = ({ tile, setTile, world, view, setView, update, setUpdate, pla
                 </div>
 
                 <div className='image-heading'>
-                    <CardFlip tile={tile} />
+                    <CardFlip tile={tile} world={world} view={view} />
                 </div>
                
                 <Resource 

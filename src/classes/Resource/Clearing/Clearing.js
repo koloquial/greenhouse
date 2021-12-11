@@ -12,14 +12,13 @@ class Clearing extends Resource{
         this.subType = 'Clearing';
         this.icon = ' ';
         this.credit = '';
-        this.resource = {none: 0};
+        this.resource = {};
+        this.options = {build: ['Campfire', 'Tent', 'Garden']}
 
         this.getImage = this.getImage.bind(this);
     }
     
     getImage(){
-        
-
         switch(this.parentType){
             case 'Forest':
                 this.credit = 'Albrecht Fietz';

@@ -1,4 +1,10 @@
-const Resource = ({ tile, setFlip }) => {
+import React, { useState, useEffect } from 'react'
+
+const Resource = ({ tile, setFlip, world, view }) => {
+    const [menu, setMenu] = useState('default');
+    const [subMenu, setSubMenu] = useState()
+
+    //need to check if peasant is nearby
 
     return (
         <div className={`${tile.parentType}-info`}>
@@ -13,7 +19,34 @@ const Resource = ({ tile, setFlip }) => {
             <br /><br />
             <hr />
 
-            content
+            {menu === 'default' ? 
+                <>
+                    {Object.keys(tile.options).map(option => {
+                        return (
+                            <button onClick={() => {
+                                setMenu('subMenu');
+                                setSubMenu(option)
+                            }}>{option}</button>
+                        )
+                    })}
+                </> : <></>}
+
+            {menu === 'subMenu' ? 
+                <table>
+                    <tr>
+                        <td>
+                            <center>
+                                {Object.keys(tile.options[subMenu]).map(option => {
+                                    return (
+                                        <div className={`${tile.parentType}-resourceItem`} onClick={() => console.log('build', option)}>
+                                            {tile.options[subMenu][option]}
+                                        </div>
+                                    )
+                                })}
+                            </center>
+                        </td>
+                    </tr>
+                </table> : <></>}
         </div>
     )
 

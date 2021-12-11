@@ -5,6 +5,8 @@ import getNearby from '../Unit/Controller/functions/getNearby';
 import Notification from '../../../Notification';
 import notify from '../../../Notification/functions/notify';
 
+import ResourceAction from './ResourceAction';
+
 const Resource = ({ tile, setTile, view, world, player, update, setUpdate, setDirection }) =>{
     const [nearby, setNearby] = useState();
     const [timer, setTimer] = useState();
@@ -40,15 +42,12 @@ const Resource = ({ tile, setTile, view, world, player, update, setUpdate, setDi
     }
     
     useEffect(() => {
-        console.log('NEARBY THIS', tile)
         let near = getNearby(world, view, tile);
-        console.log('NEAR', near)
         setNearby(near)
 
     }, [tile])
 
     useEffect(() => {
-        console.log('timer', timer)
         const peasant = isPeasantNearby();
         if(peasant){
             peasant.timer = timer;
@@ -58,71 +57,29 @@ const Resource = ({ tile, setTile, view, world, player, update, setUpdate, setDi
 
     if(tile.type === 'Resource'){
         return (
-           
-            
-           
             <div className={`${tile.parentType}-resource`}>
-                                <div style={{float: 'right'}}>
-                                    {isPeasantNearby() ? (
-                                        <button onClick={() => setTile(isPeasantNearby())}>{isPeasantNearby().name}</button>
-                                    ) : (<></>)}
-                                </div>
-                <table>
-                    <tr>
-                        {Object.keys(tile.resource).map(key => {
-                            return (
-                                <td>
-                                    <center>
-                                        {isPeasantNearby() ? 
-                                            <>
-                                                {/*peasant nearby, idle*/}
-                                                {tile.status === 'idle' ? 
-                                                    <div className={`${tile.parentType}-resourceItem`} onClick={() => {
-                                                            if(tile.status === 'idle'){
-                                                                setTarget(key);
-                                                                let time = tile.execute(tile.actions[key], setPlayerReward, setTimer);
-                                                                notify(`${tile.actions[key]}ing...`, 'info', time * 1000)
-                                                                isPeasantNearby().timer = timer;
-                                                                isPeasantNearby().status = tile.status;
-                                                            }
-                                                        }}>
-                                                            <h4>{key[0].toUpperCase() + key.slice(1)}</h4>
-                                                            <br /><p>{tile.resource[key]}</p>
-                                                    </div>
-                                                : <>
-                                                    {/*peasant nearby, not idle*/}
-                                                    {timer !== undefined ?
-                                                        <>
-                                                            <h4>{tile.actions[key]}ing...</h4>
-                                                            <br /><p>{timer}</p>
-                                                        </> : <></>
-                                                    }
-                                                   
-                                                </>   
-                                                }
-                                            </>
-                                            : <>
-                                                {/*peasant not near*/}
-                                                {tile.status === 'idle' ?
-                                                    <>{/*peasant not near, idle*/}</> 
-                                                    : <>{/*peasant not near, not idle*/}</>
-                                                }
-                                            </>  
-                                        }
-                                    </center>
-                                </td>
-                            )
-                        })}
-                    </tr>
-                </table>
-                
-                        <Notification />
+                <div style={{float: 'right'}}>
+                    {isPeasantNearby() ? 
+                        <button onClick={() => setTile(isPeasantNearby())}>{isPeasantNearby().name}</button>
+                         : <></>
+                    }
+                </div>
+
+                <Notification />
+               
+                <ResourceAction 
+                    tile={tile} 
+                    isPeasantNearby={isPeasantNearby} 
+                    setTarget={setTarget} 
+                    notify={notify}
+                    setPlayerReward={setPlayerReward}
+                    setTimer={setTimer}
+                    timer={timer}
+                    /> 
             </div>    
         )
            
-    }else{
-        return (<></>)
-    }
+    }else{return <></>}
 }
 
 export default Resource;
