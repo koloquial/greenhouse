@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 //display components
 import GenerateWorld from './components/GenerateWorld';
@@ -17,12 +16,11 @@ const App = () => {
   const [tile, setTile] = useState();
   const [update, setUpdate] = useState(0)
 
-  const handle = useFullScreenHandle();
 
   return (
     <>
-    <FullScreen handle={handle}>
-      <h3>Untitled Community</h3> <button onClick={handle.enter}>Full Screen</button>
+    
+      <h3>Untitled Community</h3> 
       
       <GenerateWorld 
         world={world} 
@@ -59,7 +57,7 @@ const App = () => {
         setView={setView}
         setTile={setTile}
       /> 
-      </FullScreen>
+      
     </>
   );
 }
