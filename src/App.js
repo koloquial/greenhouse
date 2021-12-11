@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 //display components
 import GenerateWorld from './components/GenerateWorld';
@@ -16,15 +17,19 @@ const App = () => {
   const [tile, setTile] = useState();
   const [update, setUpdate] = useState(0)
 
+  const handle = useFullScreenHandle();
+
   return (
     <>
-      <h3>Untitled Community</h3>
+    <FullScreen handle={handle}>
+      <h3>Untitled Community</h3> <button onClick={handle.enter}>Full Screen</button>
       
       <GenerateWorld 
         world={world} 
         setWorld={setWorld} 
         setPlayer={setPlayer} 
       />
+
       
       <SubGridTile 
         view={view}
@@ -54,6 +59,7 @@ const App = () => {
         setView={setView}
         setTile={setTile}
       /> 
+      </FullScreen>
     </>
   );
 }
