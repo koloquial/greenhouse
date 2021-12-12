@@ -14,7 +14,7 @@ class Clearing extends Resource{
         this.credit = '';
         this.resource = {};
         this.options = {build: ['Campfire', 'Tent', 'Garden']}
-
+        this.id = `${this.subType}-${Math.floor(Math.random() * 1000000)}-${Math.floor(Math.random() * 1000000)}-${Math.floor(Math.random() * 1000000)}`
         this.getImage = this.getImage.bind(this);
     }
     

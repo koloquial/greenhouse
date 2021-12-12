@@ -7,7 +7,7 @@ import notify from '../../../Notification/functions/notify';
 
 import ResourceAction from './ResourceAction';
 
-const Resource = ({ tile, setTile, view, world, player, update, setUpdate, setDirection }) =>{
+const Resource = ({ tile, setTile, view, world, player, update, setUpdate }) =>{
     const [nearby, setNearby] = useState();
     const [timer, setTimer] = useState();
     const [target, setTarget] = useState();

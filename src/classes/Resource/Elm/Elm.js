@@ -8,7 +8,7 @@ class Elm extends Resource{
         super(parentType, location);
         this.subType = 'Elm';
         this.icon = <i class="fas fa-tree"></i>;
-        this.id = `${parentID}`
+        this.id = `${this.subType}-${Math.floor(Math.random() * 1000000)}-${Math.floor(Math.random() * 1000000)}-${Math.floor(Math.random() * 1000000)}`
         this.resource = {
             wood: Math.floor(Math.random() * 100) + 10,
         }

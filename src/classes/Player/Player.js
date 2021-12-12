@@ -24,6 +24,20 @@ class Player{
 
         this.fillPlayer = this.fillPlayer.bind(this);
         this.addToInventory = this.addToInventory.bind(this);
+        this.addUnit = this.addUnit.bind(this);
+    }
+
+    checkDuplicate(peasant, item ){
+        for(let i = 0; i <item.length; i++){
+            if(item[i].id === peasant.id){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    addUnit(unit){
+        this.units.push(unit);
     }
 
     addToInventory(item, peasant){
@@ -33,11 +47,15 @@ class Player{
                 //NEED TO CHANGE FROM NUMBER TO CLASS OBJ eg. WOOD
                 case 'wood':
                     this.wood = this.wood + item[key];
-                    this.woodLocation.push(peasant);
+                    if(!this.checkDuplicate(peasant, this.woodLocation)){
+                        this.woodLocation.push(peasant);
+                    }
                     break;
                 case 'seeds':
                     this.seeds = this.seeds + item[key].quantity;
-                    this.seedsLocation.push(peasant);
+                    if(!this.checkDuplicate(peasant, this.seedsLocation)){
+                        this.seedsLocation.push(peasant);
+                    }
                     break;
                 default:
                     break;
@@ -46,8 +64,8 @@ class Player{
     }
 
     getUnits(item){
-        this.food = this.food - item.food;
-        this.shelter = this.shelter - item.shelter;
+        // this.food = this.food - item.food;
+        // this.shelter = this.shelter - item.shelter;
 
         this.units.push(item);
 

@@ -21,7 +21,7 @@ class Peasant extends Unit{
 
         this.food = 1;
         this.shelter = 1;
-
+        this.id = `${this.subType}-${Math.floor(Math.random() * 1000000)}-${Math.floor(Math.random() * 1000000)}-${Math.floor(Math.random() * 1000000)}`
         this.credit = 'Sasin Tipchai';
         this.getImage = this.getImage.bind(this);
     }

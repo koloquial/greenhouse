@@ -6,7 +6,7 @@ class Maple extends Resource{
         super(parentType, location);
         this.subType = 'Maple';
         this.icon = <i class="fas fa-tree"></i>;
-
+        this.id = `${this.subType}-${Math.floor(Math.random() * 1000000)}-${Math.floor(Math.random() * 1000000)}-${Math.floor(Math.random() * 1000000)}`
         this.resource = {wood: Math.floor(Math.random() * 50) + 10}
         this.credit = 'Jimmy Lau';
         this.getImage = this.getImage.bind(this);

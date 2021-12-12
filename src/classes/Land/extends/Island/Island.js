@@ -7,6 +7,7 @@ class Island extends Land{
         this.subType = 'Island';
         this.size = 12;
         this.grid = fillGrid(this.size, this.subType);
+        this.id = `${this.subType}-${Math.floor(Math.random() * 1000000)}-${Math.floor(Math.random() * 1000000)}-${Math.floor(Math.random() * 1000000)}`
 
     }
 

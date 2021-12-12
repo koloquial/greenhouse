@@ -14,7 +14,7 @@ const ClassTile = ({ tile, setTile, world, view, setView, update, setUpdate, pla
             <div className='container'>
 
                 <div className={`${tile.parentType}-heading`}>
-                    {tile.subType}
+                    {tile.name} (<i>{tile.subType}</i>)
                     <div style={{float: 'right'}}>
                         <p className='icon'>{tile.icon}</p>
                     </div> 
@@ -34,7 +34,15 @@ const ClassTile = ({ tile, setTile, world, view, setView, update, setUpdate, pla
                     setUpdate={setUpdate}
                 />
 
-                <Structure tile={tile} />
+                <Structure 
+                    tile={tile}
+                    view={view}
+                    setView={setView}
+                    update={update}
+                    setUpdate={setUpdate}
+                    world={world}
+                    player={player}
+                />
 
                 <Unit 
                     tile={tile}
