@@ -21,6 +21,10 @@ class Campfire extends Structure{
         console.log('VIEW', view);
         let checkX, checkY;
 
+        if(player.shelter <= 1 && player.food <= 1){
+            return 'Failed.'
+        }
+
         //check north
         checkX = this.location[0] - 1;
         checkY = this.location[1];
