@@ -37,11 +37,13 @@ class Player{
     }
 
     addUnit(unit){
+        this.food = this.food - unit.food;
+        this.shelter = this.shelter - unit.shelter;
         this.units.push(unit);
     }
 
     addToInventory(item, peasant){
-        console.log('ADD THIS ITEM', item)
+        
         Object.keys(item).forEach(key => {
             switch(key){
                 //NEED TO CHANGE FROM NUMBER TO CLASS OBJ eg. WOOD

@@ -7,16 +7,11 @@ const Unit = ({ tile, setFlip }) => {
     console.log('unit', tile.options)
     return (
         <div className={`${tile.parentType}-info`}>
-            <div style={{float: 'left', display: 'inline-block'}}>
-                <h2>{tile.name}</h2>
-            </div>
-
-            <div style={{float: 'right', display: 'inline-block'}}>
-                <button  onClick={() => setFlip(false)}>Back</button>
-            </div>
-            <br /><br />
-
+   
             <div className='tab'>
+            <div style={{float: 'right', display: 'inline-block'}}>
+                <button  onClick={() => setFlip(false)}>Photo</button>
+            </div>
             {tile.options.map(option => {
                 return (
                     <button onClick={() => {
@@ -90,22 +85,26 @@ const Unit = ({ tile, setFlip }) => {
                 </tr>
             </table> : <></>
         }
-        
+
 
         {menu === 'Inventory' ? <>
         {console.log('TILE:', tile)}
             {tile.inventory.map(item => {
                 console.log('ITEM', item)
                 return (
-                    <div className={`${tile.parentType}-resourceItem`}>
+                    <div className={`${tile.parentType}-resourceItem`} onClick={() => alert('use item')}>
                         <h4>{item.subType}</h4><p>x {item.quantity}</p>
+                        <div style={{float: 'right', verticalAlign: 'top'}}>
+                            <button onClick={() => alert('drop item')}>Drop</button>
+                            <button onClick={() => alert('info item')}>Info</button>
+                        </div>
                     </div>
                 )
             })}
         
         </> : <></>}
             
-            
+
         </div>
     )
 }
