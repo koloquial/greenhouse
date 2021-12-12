@@ -12,7 +12,7 @@ const Units = ({ active, player, world, setView, setTile }) => {
                                         setTile(unit);
                                     }}>
                                         {unit.icon}<br />
-                                        [{unit.worldLocation[0]}, {unit.worldLocation[1]}]
+                                        {unit.name}
                                     </div>
                                 </center>
                             </td>

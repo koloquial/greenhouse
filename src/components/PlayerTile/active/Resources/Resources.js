@@ -1,4 +1,4 @@
-const Resources = ({ active, player }) => {
+const Resources = ({ active, player, setActive }) => {
     if(active === 'Resources'){
         return (
             <table>
@@ -13,7 +13,7 @@ const Resources = ({ active, player }) => {
                     </td>
                     <td>
                         <center>
-                            <div className='Player-resourceItem' onClick={() => console.log('player wood locations', player.woodLocation)}>
+                            <div className='Player-resourceItem' onClick={() => setActive('wood')}>
                                 <h4>Wood</h4><br />
                                 <p>{player.wood}</p>
                             </div>
@@ -47,7 +47,7 @@ const Resources = ({ active, player }) => {
                     </td>
                     <td>
                         <center>
-                            <div className='Player-resourceItem' onClick={() => console.log('player seed locations', player.seedsLocation)}>
+                            <div className='Player-resourceItem' onClick={() => setActive('seeds')}>
                                 <h4>Seeds</h4><br />
                                 <p>{player.seeds}</p>
                             </div>

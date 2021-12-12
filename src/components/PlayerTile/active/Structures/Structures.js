@@ -12,7 +12,7 @@ const Structures = ({ active, player, world, setView, setTile }) => {
                                         setTile(structure);
                                     }}>
                                         {structure.icon}<br />
-                                        [{structure.worldLocation[0]}, {structure.worldLocation[1]}]
+                                        {structure.subType}
                                     </div>
                                 </center>
                             </td>
