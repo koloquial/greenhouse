@@ -16,7 +16,7 @@ const Controller = ({ tile, setTile, world, view, setView, update, setUpdate }) 
 
     useEffect(() => {
         if(alertMessage !== ''){
-            notify(alertMessage, 'error', alertTime);
+            notify(alertMessage, 'warning', alertTime);
             setTimeout(() => setAlertMessage(), alertTime)
         }
    

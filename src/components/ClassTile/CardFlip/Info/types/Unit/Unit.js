@@ -1,5 +1,10 @@
+import React, { useState } from 'react';
+
 const Unit = ({ tile, setFlip }) => {
-    console.log('unit', tile)
+    const [menu, setMenu] = useState('Stats');
+    const [subMenu, setSubMenu] = useState('');
+
+    console.log('unit', tile.options)
     return (
         <div className={`${tile.parentType}-info`}>
             <div style={{float: 'left', display: 'inline-block'}}>
@@ -9,11 +14,20 @@ const Unit = ({ tile, setFlip }) => {
             <div style={{float: 'right', display: 'inline-block'}}>
                 <button  onClick={() => setFlip(false)}>Back</button>
             </div>
-
             <br /><br />
-            <hr />
-            
-            <table>
+
+            <div className='tab'>
+            {tile.options.map(option => {
+                return (
+                    <button onClick={() => {
+                        setMenu(option)
+                    }}>{option[0].toUpperCase() + option.slice(1)}</button>
+                )
+            })}
+            </div>
+
+            {menu === 'Stats' ? 
+                <table>
                 <tr>
                     <td>
                         <center>
@@ -74,7 +88,24 @@ const Unit = ({ tile, setFlip }) => {
                         </center>
                     </td>
                 </tr>
-            </table>   
+            </table> : <></>
+        }
+        
+
+        {menu === 'Inventory' ? <>
+        {console.log('TILE:', tile)}
+            {tile.inventory.map(item => {
+                console.log('ITEM', item)
+                return (
+                    <div className={`${tile.parentType}-resourceItem`}>
+                        <h4>{item.subType}</h4><p>x {item.quantity}</p>
+                    </div>
+                )
+            })}
+        
+        </> : <></>}
+            
+            
         </div>
     )
 }

@@ -34,6 +34,16 @@ const notify = (message, type, time) => {
                 draggable: true,
                 progress: undefined,
                 });
+        case 'warning':
+        return toast.warning(message, {
+            position: "bottom-right",
+            autoClose: time,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
         default:
             return;
     }

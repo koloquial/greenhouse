@@ -25,16 +25,53 @@ const Resource = ({ tile, setTile, view, world, player, update, setUpdate, setDi
         return false;
     }
 
-    const setPlayerReward = (reward, res) => {
+    const setPlayerReward = (reward) => {
 
         const peasant = isPeasantNearby();
         peasant.status = 'idle';
 
-        player[res] = player[res] + reward;
-        notify(`+${reward} ${res}.`, 'success', 1.5 * 1000);
+        console.log('PEASANT!: ', peasant)
 
-        let clearing = new Clearing(tile.parentType, [tile.location[0], tile.location[1]]);
-        view.grid[tile.location[0]][tile.location[1]] = clearing;
+        let id = null;
+        Object.keys(reward).forEach(key => {
+            switch(typeof reward[key]){
+                case 'number':
+                    id = null;
+                    for(let i = 0; i < peasant.inventory.length; i++){
+                        if(peasant.inventory[i].subType === `${key[0].toUpperCase()}${key.slice(1)}`){
+                            id = i;
+                        } 
+                    }
+                    if(id !== null){
+                        peasant.inventory[id].quantity = peasant.inventory[id].quantity + reward[key];
+                    }else{
+                        peasant.inventory.push({subType: `${key[0].toUpperCase()}${key.slice(1)}`, quantity: reward[key]});
+                    }
+                    notify(`+${reward[key]} ${key[0].toUpperCase()}${key.slice(1)}`, 'success', 1.5 * 1000);
+                    break;
+                case 'object':
+                    id = null;
+                    for(let i = 0; i < peasant.inventory.length; i++){
+                        if(peasant.inventory[i].subType === key){
+                            id = i;
+                        } 
+                    }
+                    if(id !== null){
+                        peasant.inventory[id].quantity = peasant.inventory[id].quantity + reward[key];
+                    }else{
+                        peasant.inventory.push(reward[key]);
+                    }
+                    
+                    notify(`+${reward[key].quantity} ${reward[key].subType[0].toUpperCase()}${reward[key].subType.slice(1)}`, 'success', 1.5 * 1000);
+                    break;
+                default: break;
+            }
+        })
+
+        if(tile.status === 'delete'){
+            let clearing = new Clearing(tile.parentType, [tile.location[0], tile.location[1]]);
+            view.grid[tile.location[0]][tile.location[1]] = clearing;
+        }
         setTarget();
         setTimer();
         // setNearby();

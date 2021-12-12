@@ -8,6 +8,8 @@ class Unit{
         this.name = getName('Male')
         this.steps = 0;
         this.worldLocation = worldLocation;
+        this.inventory = [];
+        this.options = ['Stats', 'Inventory'];
     }
 }
 

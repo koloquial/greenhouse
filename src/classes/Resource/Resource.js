@@ -8,7 +8,6 @@ class Resource{
         this.rewardCallback = null;
         this.timerCallback = null;
         
-
         this.execute = this.execute.bind(this);
         this.countdown = this.countdown.bind(this);
     }
@@ -21,17 +20,29 @@ class Resource{
             setTimeout(() => this.countdown(), 1000)
         }else{
             if(this.status !== 'idle'){
-                let reward;
-                let res;
+                let reward = {};
                 for(let key in this.actions){
                     if(this.actions[key] === this.status){
-                        reward = this.resource[key];
-                        res = key;
-                        this.resource[key] = 0;
-                        
+                        reward[key] = this.resource[key];
+                        delete this.resource[key];
                     }
                 }
-                this.rewardCallback(reward, res);
+
+                let randomBonus = Math.floor(Math.random() * 4);
+                if(randomBonus === 2){
+                   let bonus = this.getBonus();
+                   console.log('BONUS', bonus)
+                   Object.keys(bonus).forEach(item => {
+                       reward[item] = bonus[item]
+                   })
+                }
+
+                if(Object.keys(this.resource).length === 0){
+                    this.status = 'delete';
+                }else{
+                    this.status = 'idle';
+                }
+                this.rewardCallback(reward);
             }
         }
     }
@@ -43,7 +54,6 @@ class Resource{
                 this.timer = 11;
                 this.rewardCallback = rewardCallback;
                 this.timerCallback = timerCallback;
-                
                 break;
             default: break;
         }
