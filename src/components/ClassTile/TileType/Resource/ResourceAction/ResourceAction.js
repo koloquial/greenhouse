@@ -1,9 +1,19 @@
-const ResourceAction = ({ tile, isPeasantNearby, setTarget, notify, setPlayerReward, setTimer, timer }) => {
+import React, { useState, useEffect } from 'react';
+
+const ResourceAction = ({ tile, isPeasantNearby, setTarget, notify, setPlayerReward, setTimer, timer, handleResourceItem, setResourceOrder }) => {
+    const [resOrder, setResOrder] = useState([]);
+
+    useEffect(() => {
+        if(isPeasantNearby()){
+            setResourceOrder(resOrder);
+        }
+    })
 
     return (
         <table>
             <tr>
                 {Object.keys(tile.resource).map(key => {
+                    resOrder.push(key);
                     return (
                         <td>
                             <center>
@@ -11,15 +21,7 @@ const ResourceAction = ({ tile, isPeasantNearby, setTarget, notify, setPlayerRew
                                     <>
                                         {/*peasant nearby, idle*/}
                                         {tile.status === 'idle' ? 
-                                            <div className={`${tile.parentType}-resourceItem`} onClick={() => {
-                                                    if(tile.status === 'idle'){
-                                                        setTarget(key);
-                                                        let time = tile.execute(tile.actions[key], setPlayerReward, setTimer);
-                                                        notify(`${tile.actions[key]}ing.`, 'info', time * 1000)
-                                                        isPeasantNearby().timer = timer;
-                                                        isPeasantNearby().status = tile.status;
-                                                    }
-                                                }}>
+                                            <div className={`${tile.parentType}-resourceItem`} onClick={() => handleResourceItem(key)}>
                                                     <h4>{key[0].toUpperCase() + key.slice(1)}</h4>
                                                     <br /><p>{Array.isArray(tile.resource[key]) ? tile.resource[key].length : tile.resource[key]}</p>
                                             </div>
