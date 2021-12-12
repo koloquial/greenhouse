@@ -14,47 +14,91 @@ const App = () => {
   const [player, setPlayer] = useState();
   const [view, setView] = useState();
   const [tile, setTile] = useState();
-  const [update, setUpdate] = useState(0)
+  const [update, setUpdate] = useState(0);
+  const [battleLog, setBattleLog] = useState([]);
 
   return (
     <>
-      <GenerateWorld 
-        world={world} 
-        setWorld={setWorld} 
-        setPlayer={setPlayer} 
-      />
+      {battleLog.length ? 
+        (<>
+          {battleLog.map(battle => {
+            return (
+              <div className={`${battle.enemy.parentType}-battle`}>
+                
+                <div className='battle-box' style={{alignContent: 'right'}}>
+                  {console.log('ENEMY', battle.enemy)}
+                  <center>
+                  <table>
+                    <tr>
+                      <td>{battle.enemy.health[0]}/{battle.enemy.health[1]}</td>
+                      <td><i>{battle.enemy.subType}</i> {battle.enemy.icon}</td>
+                    </tr>
+                    <tr>
+                      <img 
+                        src={battle.enemy.getImage()} 
+                        style={{width: '25%', opacity: 1, margin: '0'}} 
+                        title={`Image by ${battle.enemy.credit} at Pixabay`} 
+                      />
+                    </tr>
+                  </table>
+                  </center>
+                </div>
 
-      
-      <SubGridTile 
-        view={view}
-        setTile={setTile}
-      />
-      
-      <ClassTile 
-        tile={tile}
-        setTile={setTile}
-        world={world}
-        view={view}
-        setView={setView}
-        update={update}
-        setUpdate={setUpdate}
-        player={player}
-      />
-
-
-      <PlayerTile 
-        player={player} 
-        world={world}
-        setView={setView}
-        setTile={setTile}
-      /> 
-
-<WorldTile 
-        world={world}
-        setView={setView}
-        setTile={setTile}
-      />
-      
+                <div className='battle-box' style={{alignContent: 'left'}}>
+                {console.log('USER', battle.user)}<center>
+                <table>
+                    <tr>
+                      <td>{battle.user.health[0]}/{battle.user.health[1]}</td>
+                      <td>{battle.user.name} {battle.user.icon}</td>
+                    </tr>
+                    <tr>
+                      <img 
+                        src={battle.user.getImage()} 
+                        style={{width: '25%', opacity: 1, margin: '0'}} 
+                        title={`Image by ${battle.user.credit} at Pixabay`} 
+                      />
+                    </tr>
+                  </table>
+                  </center>
+                </div>
+          
+            </div>)
+          })}
+        </>) 
+        
+        : (<>
+            <GenerateWorld 
+              world={world} 
+              setWorld={setWorld} 
+              setPlayer={setPlayer} 
+            />
+            <SubGridTile 
+              view={view}
+              setTile={setTile}
+            />
+            <ClassTile 
+              tile={tile}
+              setTile={setTile}
+              world={world}
+              view={view}
+              setView={setView}
+              update={update}
+              setUpdate={setUpdate}
+              player={player}
+              battleLog={battleLog}
+            />
+            <PlayerTile 
+              player={player} 
+              world={world}
+              setView={setView}
+              setTile={setTile}
+            /> 
+            <WorldTile 
+              world={world}
+              setView={setView}
+              setTile={setTile}
+            />
+          </>)}
     </>
   );
 }

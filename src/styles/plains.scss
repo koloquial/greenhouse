@@ -23,3 +23,7 @@
 .Plains-disabled{
     @include disabledLand($Plains_disabled);
 }
+
+.Plains-battle{
+    @include battle($Plains);
+}

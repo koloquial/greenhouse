@@ -9,7 +9,7 @@ const CardFlip = ({ tile }) => {
         <ReactCardFlip isFlipped={flip} flipDirection="horizontal">
 
             <div style={{cursor: 'pointer'}} onClick={() => setFlip(true)}>
-                <img 
+                    <img 
                     src={tile.getImage()} 
                     style={{width: '100%', opacity: .7, margin: '0'}} 
                     title={`Image by ${tile.credit} at Pixabay`} 

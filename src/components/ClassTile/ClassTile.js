@@ -3,9 +3,10 @@ import Resource from './TileType/Resource';
 import Structure from './TileType/Structure';
 import Unit from './TileType/Unit';
 import CardFlip from './CardFlip';
+import Companion from './TileType/Companion';
 
-const ClassTile = ({ tile, setTile, world, view, setView, update, setUpdate, player }) => {
-    
+const ClassTile = ({ tile, setTile, world, view, setView, update, setUpdate, player, battleLog }) => {
+    console.log('[Class Tile]:', tile)
     if(tile === undefined){
         return <></>
 
@@ -52,6 +53,17 @@ const ClassTile = ({ tile, setTile, world, view, setView, update, setUpdate, pla
                     setView={setView} 
                     update={update} 
                     setUpdate={setUpdate} 
+                />
+
+                <Companion
+                    battleLog={battleLog}
+                    tile={tile}
+                    view={view} 
+                    setView={setView}
+                    update={update}
+                    setUpdate={setUpdate}
+                    world={world}
+                    player={player}
                 />
                 
             </div>

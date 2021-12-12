@@ -156,6 +156,7 @@ const Resource = ({ tile, setTile, view, world, player, update, setUpdate }) =>{
         }
     }
 
+    console.log('[Resource TileType]', tile)
     if(tile.type === 'Resource'){
         return (
             <div className={`${tile.parentType}-resource`}>

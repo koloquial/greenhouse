@@ -32,6 +32,15 @@ h1, h2, h3, h4, h5, p {
    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
+.battle-box{
+   display: inline-block;
+   padding: 5px;
+   margin: 5px;
+   color: black;
+   background: linear-gradient(45deg, white, whitesmoke);
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
 .image-heading{
    margin-top: 5px;
    margin-bottom: 5px;
