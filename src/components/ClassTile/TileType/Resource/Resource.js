@@ -30,11 +30,12 @@ const Resource = ({ tile, setTile, view, world, player, update, setUpdate, setDi
         const peasant = isPeasantNearby();
         peasant.status = 'idle';
 
-        console.log('PEASANT!: ', peasant)
-
         let id = null;
         Object.keys(reward).forEach(key => {
             switch(typeof reward[key]){
+                //later remove number
+                //add only object classes 
+                //eg. wood with specific subtype of wood
                 case 'number':
                     id = null;
                     for(let i = 0; i < peasant.inventory.length; i++){
@@ -67,6 +68,7 @@ const Resource = ({ tile, setTile, view, world, player, update, setUpdate, setDi
                 default: break;
             }
         })
+        player.addToInventory(reward, peasant);
 
         if(tile.status === 'delete'){
             let clearing = new Clearing(tile.parentType, [tile.location[0], tile.location[1]]);

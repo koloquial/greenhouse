@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //display components
 import GenerateWorld from './components/GenerateWorld';
@@ -15,7 +15,6 @@ const App = () => {
   const [view, setView] = useState();
   const [tile, setTile] = useState();
   const [update, setUpdate] = useState(0)
-
 
   return (
     <>

@@ -45,6 +45,14 @@ const Resources = ({ active, player }) => {
                             </div>
                         </center>
                     </td>
+                    <td>
+                        <center>
+                            <div className='Player-resourceItem' onClick={() => console.log('player seed locations', player.seeds)}>
+                                <h4>Seeds</h4><br />
+                                <p>{player.seeds}</p>
+                            </div>
+                        </center>
+                    </td>
                 </tr>
             </table>
         )
