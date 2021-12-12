@@ -36,7 +36,7 @@ class Player{
                     this.woodLocation.push(peasant);
                     break;
                 case 'seeds':
-                    this.seeds = this.seeds + item[key];
+                    this.seeds = this.seeds + item[key].quantity;
                     this.seedsLocation.push(peasant);
                     break;
                 default:

@@ -13,7 +13,7 @@ const Resources = ({ active, player }) => {
                     </td>
                     <td>
                         <center>
-                            <div className='Player-resourceItem'>
+                            <div className='Player-resourceItem' onClick={() => console.log('player wood locations', player.woodLocation)}>
                                 <h4>Wood</h4><br />
                                 <p>{player.wood}</p>
                             </div>
@@ -47,7 +47,7 @@ const Resources = ({ active, player }) => {
                     </td>
                     <td>
                         <center>
-                            <div className='Player-resourceItem' onClick={() => console.log('player seed locations', player.seeds)}>
+                            <div className='Player-resourceItem' onClick={() => console.log('player seed locations', player.seedsLocation)}>
                                 <h4>Seeds</h4><br />
                                 <p>{player.seeds}</p>
                             </div>
