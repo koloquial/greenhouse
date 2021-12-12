@@ -9,21 +9,22 @@ import deleteSave from '../../functions/deleteSave';
 
 const GenerateWorld = ({ world, setWorld, setPlayer }) => {
     return (
-        <>
+        <div style={{display: 'inline-block'}}>
             {world === undefined ?
-             
-                <button onClick={() => {
+            <>
+            
+            <h2>Untitled-Community</h2>
+            <button onClick={() => {
                     let modelWorld = new World();
                     let model = new Player('Dashboard');
                     model.fillPlayer(modelWorld);
                     setPlayer(model); 
                     setWorld(modelWorld);
                 }}>Generate World</button> 
-                
-                : 
-                
-                <>
-                <button onClick={() => alert(`
+
+                &nbsp;
+
+            <button onClick={() => alert(`
                     W,A,S,D : move selected units.
 
                     Arrow keys: select nearby tile while.
@@ -37,9 +38,16 @@ const GenerateWorld = ({ world, setWorld, setPlayer }) => {
                     {/* <button onClick={() => {saveFile(); alert('Not yet implemented. Check console.');}}>Save</button>&nbsp;
                     <button onClick={() => {loadFile(); alert('Not yet implemented. Check console.');}}>Load</button>&nbsp;
                     <button onClick={() => {deleteSave(); alert('Not yet implemented. Check console.');}}>Delete Save</button> */}
+            </>
+
+                
+                : 
+                
+                <>
+                
                 </>
             }
-        </>
+        </div>
     )
 }
 export default GenerateWorld;

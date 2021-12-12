@@ -18,9 +18,6 @@ const App = () => {
 
   return (
     <>
-    
-      <h3>Untitled Community</h3> 
-      
       <GenerateWorld 
         world={world} 
         setWorld={setWorld} 
