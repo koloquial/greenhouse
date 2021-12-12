@@ -6,7 +6,7 @@ const notify = (message, type, time) => {
     switch(type){
         case 'info':
             return toast.info(message, {
-                position: "bottom-right",
+                position:"top-left",
                 autoClose: time,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -16,7 +16,7 @@ const notify = (message, type, time) => {
                 });
         case 'error':
             return toast.error(message, {
-                position: "bottom-right",
+                position:"top-left",
                 autoClose: time,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -26,7 +26,7 @@ const notify = (message, type, time) => {
                 });
         case 'success':
             return toast.success(message, {
-                position: "bottom-right",
+                position:"top-left",
                 autoClose: time,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -36,7 +36,7 @@ const notify = (message, type, time) => {
                 });
         case 'warning':
         return toast.warning(message, {
-            position: "bottom-right",
+            position:"top-left",
             autoClose: time,
             hideProgressBar: false,
             closeOnClick: true,

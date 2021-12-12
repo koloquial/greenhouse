@@ -44,11 +44,6 @@ const App = () => {
         player={player}
       />
 
-      <WorldTile 
-        world={world}
-        setView={setView}
-        setTile={setTile}
-      />
 
       <PlayerTile 
         player={player} 
@@ -56,6 +51,12 @@ const App = () => {
         setView={setView}
         setTile={setTile}
       /> 
+
+<WorldTile 
+        world={world}
+        setView={setView}
+        setTile={setTile}
+      />
       
     </>
   );

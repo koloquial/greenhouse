@@ -24,10 +24,14 @@ const GenerateWorld = ({ world, setWorld, setPlayer }) => {
                 
                 <>
                 <button onClick={() => alert(`
-                Controls:
-                    W,A,S,D keys move selected units. 
-                    Arrow keys select nearby tile.
-                    Shift to go back from selected tile to nearby peasant.
+                    W,A,S,D : move selected units.
+
+                    Arrow keys: select nearby tile while.
+
+                    Shift: go back from selected tile to nearby peasant.
+
+                    # keys: preform action (eg. felling wood) 
+                    on corresponding resource.
                     `)}>Keyboard Shortcuts</button>
                     <br />
                     {/* <button onClick={() => {saveFile(); alert('Not yet implemented. Check console.');}}>Save</button>&nbsp;
