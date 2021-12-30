@@ -5,8 +5,8 @@ https://project-greenhouse.herokuapp.com/
 The goals for Greenhouse are meshed within several of my favorite genres.  Originally Greenhouse
 started as a 1v1 RTS - however - I wanted to include aspects of farming, survival and rpg elements
 that would make a single match longer than desired. I scratched the project - and started again with 
-a focus on a single player experience with multiplayer elements optional and to come later through
-factions you are able to join and complete missions on a pvp server.
+a focus on a single player experience with optional multiplayer elements through factions you are able 
+to join and complete missions on a pvp server.
 
 ### Under Construction
 Whats available: 
@@ -25,6 +25,7 @@ Whats available:
 - View item details by clicking image
     - Access build menu by clicking on a clearing, and then the image to reveal details.
         - Build menu not fully processed
+
 
 ### Technology
 Front End:
