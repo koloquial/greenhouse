@@ -28,7 +28,7 @@ const Companion = ({ tile, view, setView, update, setUpdate, world, player, batt
 
         if(!tile.friendly){
             if(temp){
-                battleLog.push({enemy: tile, user: temp});
+                // battleLog.push({enemy: tile, user: temp});
                 setUpdate(update + 1);
             }
         }
