@@ -13,7 +13,7 @@ const GenerateWorld = ({ world, setWorld, setPlayer }) => {
             {world === undefined ?
             <>
             
-            <h2>Untitled-Community</h2>
+            <h2>Greenhouse</h2>
             <button onClick={() => {
                     let modelWorld = new World();
                     let model = new Player('Dashboard');
