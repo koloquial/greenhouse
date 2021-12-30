@@ -25,9 +25,8 @@ const App = () => {
             return (
               <div className={`${battle.enemy.parentType}-battle`}>
                 
-                <div className='battle-box' style={{alignContent: 'right'}}>
-                  {console.log('ENEMY', battle.enemy)}
-                  <center>
+                <div className='battle-box'>
+                  <div style={{float: 'right', width: '200px', display: 'inline-block'}}>
                   <table>
                     <tr>
                       <td>{battle.enemy.health[0]}/{battle.enemy.health[1]}</td>
@@ -41,11 +40,12 @@ const App = () => {
                       />
                     </tr>
                   </table>
-                  </center>
+                  </div>
                 </div>
+                <br />
 
-                <div className='battle-box' style={{alignContent: 'left'}}>
-                {console.log('USER', battle.user)}<center>
+                <div className='battle-box'>
+                <div style={{float: 'left', width: '200px', display: 'inline-block'}}>
                 <table>
                     <tr>
                       <td>{battle.user.health[0]}/{battle.user.health[1]}</td>
@@ -59,9 +59,9 @@ const App = () => {
                       />
                     </tr>
                   </table>
-                  </center>
                 </div>
-          
+                </div>
+              
             </div>)
           })}
         </>) 
